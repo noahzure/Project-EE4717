@@ -36,7 +36,7 @@
         <img src="../asset/photo/home.png" style="width:100%">
         </header>
         <div style="text-align: center">
-            <p>Testing
+            <p>Testing blabalbal 
                  
             </p>
         </div>
