@@ -1,0 +1,160 @@
+/* Styles for menu page */
+#menu-nav-container a:hover {
+	opacity: 0.5;
+}
+
+#menu-nav-container {
+	text-align: center;
+	margin-top: 63px;
+}
+
+#menu-nav-container li {
+	display: inline-block;
+	padding-top: 10px;
+	position: relative;
+}
+
+#menu-nav-container li a {
+	display: block;
+	color: #444;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+
+#menu-nav-container ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+#menu-list-container {
+	padding-top: 20px;
+	margin: 0 auto;
+	text-align: center;
+
+}
+
+#menu-list-container ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+#menu-list-container img:hover {
+	opacity: 0.7;
+}
+
+.menu-item {
+	display: inline-block;
+	margin: 60px;
+}
+
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+#button-top {
+  display: none;
+  position: fixed;
+  bottom: 210px;
+  right: 200px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 10%;
+  opacity: 0.8;
+}
+
+#button-top img {
+	width: 50%;
+	width: 50%;
+}
+
+#button-top:hover {
+  background-color: #555;
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+	height: 50%;
+}
+
+.modal-col1 {
+	display: inline-block;
+	float:left;
+	margin-left: 50px;
+	width: 20%;
+}
+
+.modal-col2 {
+	display: inline-block;
+	width: 45%;
+}
+
+.modal-col3 {
+	display: inline-block;
+	width: 5%;
+	float: right;
+}
+
+.input-number {
+	border: 1px solid black;
+	border-radius: 0px;
+	padding: 5px 8px;
+	width: 50px;
+	font-size: 18px;
+	margin-bottom: 10px; 
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.submit {
+    background-color: black; 
+    border: 1px solid black;
+    color: white;
+    padding: 8px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+	width: 260px;
+	cursor: pointer;
+}
