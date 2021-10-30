@@ -33,3 +33,15 @@
 	width: 65%;
 	height: 65%;
 }
+
+/* Locations */
+
+.location-contatiner{
+	margin: auto;
+}
+
+
+.location-sub-contatiner{
+	display: inline-block;
+	margin: auto;
+}
