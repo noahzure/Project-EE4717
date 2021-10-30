@@ -35,11 +35,328 @@
         <header>
         <img src="../asset/photo/menu.png" style="width:100%">
         </header>
-        <div style="text-align: center">
-            <p>Testing 123
-                 
-            </p>
-        </div>
+        <div id="menu-content">
+                <div id="menu-list-container">
+
+                <?php
+                                    $items=array();
+                                    $itemsName=array();
+                                    $price = array();
+                                    $image = array();
+                                    $id=array();
+                                    $i=0;
+                                    $k = 0;
+                ?>
+                <?php
+                    $servername = "localhost";
+                    $username = "f32ee";
+                    $password = "f32ee";
+                    $dbname = "f32ee";
+                    // Create connection
+                    $conn = mysqli_connect($servername, $username, $password, $dbname);
+                    // Check connection
+                    if (!$conn) {
+                        die("Connection failed: " . mysqli_connect_error());
+                    }
+                ?>
+
+                <?php
+
+                    $sql = "SELECT * FROM menu WHERE type='Maki'";
+                    $result = mysqli_query($conn, $sql);
+
+                    if (mysqli_num_rows($result) > 0) {
+                        // output data of each row
+                        
+                        while($row = mysqli_fetch_assoc($result)) {
+                            if ($row['availability']>0){
+                                $id[$i]=$row['id'];
+                                $itemsName[$i]=$row['name'];
+                                $items[$i] =  str_replace(' ', '', $itemsName[$i]); 
+                                $price[$i] = $row['price'];
+                                $image[$i]= $row['imgURL'];
+                                $description[$i]=$row['description'];
+                                $i=$i+1;
+                            }
+                        }
+                    }
+                    ?>
+           
+                    <?php
+                        echo '<div id="maki" style="padding-top: 20px;">';
+                        //echo '<h1>Maki</h1>';
+
+                       $c = 0;
+                       for ($i=0; $i<count($items); $i++)
+                        {
+                            if ($c == 0) {
+                                echo '<div class="menu-item_row">';
+                            }
+                            echo
+                            '
+                            <div class="menu-item">
+                            <div id="'.$items[$k].'container" onclick="';
+                            echo "modalFunc('".$itemsName[$k]."',".$price[$k].",'".$image[$k]."',".$id[$k].",'".$description[$k]."')";
+                            echo
+                            '"><img src="'.$image[$k].'"><div>'.$itemsName[$k].'</div>
+                            </div> 
+                            </div>
+                            ';
+
+                            if ($c==2) {
+                                echo '</div>';
+                                $c = 0;
+                            }
+                            else {
+                                $c++;
+                            }
+                            $k++;
+                        }
+                        
+                    ?>
+                <!--</div>-->
+                <?php
+
+                    $sql = "SELECT * FROM menu WHERE type='Nigiri'";
+                    $result = mysqli_query($conn, $sql);
+
+                    if (mysqli_num_rows($result) > 0) {
+                        // output data of each row
+                        
+                        while($row = mysqli_fetch_assoc($result)) {
+                            if ($row['availability']>0){
+                            $id[$i]=$row['id'];
+                            $itemsName[$i]=$row['name'];
+                            $items[$i] =  str_replace(' ', '', $itemsName[$i]); 
+                            $price[$i] = $row['price'];
+                            $image[$i]= $row['imgURL'];
+                            $description[$i]=$row['description'];
+                            $i=$i+1;
+                            }
+                        }
+                    }
+                    ?>
+
+                    <?php
+                        echo '<div id="nigiri" style="padding-top: 20px;">';
+                        //echo '<h1>Nigiri</h1>';
+
+                    $c = 0;
+                    for ($i=$k; $i<count($items); $i++)
+                        {
+                            if ($c == 0) {
+                                echo '<div class="menu-item_row">';
+                            }
+                            echo
+                            '
+                            <div class="menu-item">
+                            <div id="'.$items[$k].'container" onclick="';
+                            echo "modalFunc('".$itemsName[$k]."',".$price[$k].",'".$image[$k]."',".$id[$k].",'".$description[$k]."')";
+                            echo
+                            '"><img src="'.$image[$k].'"><div>'.$itemsName[$k].'</div>
+                            </div> 
+                            </div>
+                            ';
+
+                            if ($c==2) {
+                                echo '</div>';
+                                $c = 0;
+                            }
+                            else {
+                                $c++;
+                            }
+                            $k++;
+                        }
+                    ?>
+
+                    <?php
+
+                    $sql = "SELECT * FROM menu WHERE type='Sets'";
+                    $result = mysqli_query($conn, $sql);
+
+                    if (mysqli_num_rows($result) > 0) {
+                        // output data of each row
+                        
+                        while($row = mysqli_fetch_assoc($result)) {
+                            if ($row['availability']>0){
+                            $id[$i]=$row['id'];
+                            $itemsName[$i]=$row['name'];
+                            $items[$i] =  str_replace(' ', '', $itemsName[$i]); 
+                            $price[$i] = $row['price'];
+                            $image[$i]= $row['imgURL'];
+                            $description[$i]=$row['description'];
+                            $i=$i+1;
+                            }
+                        }
+                    }
+                    ?>
+
+                    <?php
+                        echo '<div id="sets" style="padding-top: 20px;">';
+                        //echo '<h1>Sets</h1>';
+
+                    $c = 0;
+                    for ($i=$k; $i<count($items); $i++)
+                        {
+                            if ($c == 0) {
+                                echo '<div class="menu-item_row">';
+                            }
+                            echo
+                            '
+                            <div class="menu-item">
+                            <div id="'.$items[$k].'container" onclick="';
+                            echo "modalFunc('".$itemsName[$k]."',".$price[$k].",'".$image[$k]."',".$id[$k].",'".$description[$k]."')";
+                            echo
+                            '"><img src="'.$image[$k].'"><div>'.$itemsName[$k].'</div>
+                            </div> 
+                            </div>
+                            ';
+
+                            if ($c==2) {
+                                echo '</div>';
+                                $c = 0;
+                            }
+                            else {
+                                $c++;
+                            }
+                            $k++;
+                        }
+                    ?>                    
+
+                    <?php
+
+                    $sql = "SELECT * FROM menu WHERE type='Don'";
+                    $result = mysqli_query($conn, $sql);
+
+                    if (mysqli_num_rows($result) > 0) {
+                        // output data of each row
+                        
+                        while($row = mysqli_fetch_assoc($result)) {
+                            if ($row['availability']>0){
+                            $id[$i]=$row['id'];
+                            $itemsName[$i]=$row['name'];
+                            $items[$i] =  str_replace(' ', '', $itemsName[$i]); 
+                            $price[$i] = $row['price'];
+                            $image[$i]= $row['imgURL'];
+                            $description[$i]=$row['description'];
+                            $i=$i+1;
+                            }
+                        }
+                    }
+                    ?>
+
+                    <?php
+                        echo '<div id="don" style="padding-top: 20px;">';
+                        //echo '<h1>Don</h1>';
+
+                    $c = 0;
+                    for ($i=$k; $i<count($items); $i++)
+                        {
+                            if ($c == 0) {
+                                echo '<div class="menu-item_row">';
+                            }
+                            echo
+                            '
+                            <div class="menu-item">
+                            <div id="'.$items[$k].'container" onclick="';
+                            echo "modalFunc('".$itemsName[$k]."',".$price[$k].",'".$image[$k]."',".$id[$k].",'".$description[$k]."')";
+                            echo
+                            '"><img src="'.$image[$k].'"><div>'.$itemsName[$k].'</div>
+                            </div> 
+                            </div>
+                            ';
+
+                            if ($c==2) {
+                                echo '</div>';
+                                $c = 0;
+                            }
+                            else {
+                                $c++;
+                            }
+                            $k++;
+                        }
+                    ?>
+
+                    <?php
+
+                    $sql = "SELECT * FROM menu WHERE type='Gunkan'";
+                    $result = mysqli_query($conn, $sql);
+
+                    if (mysqli_num_rows($result) > 0) {
+                        // output data of each row
+                        
+                        while($row = mysqli_fetch_assoc($result)) {
+                            if ($row['availability']>0){
+                            $id[$i]=$row['id'];
+                            $itemsName[$i]=$row['name'];
+                            $items[$i] =  str_replace(' ', '', $itemsName[$i]); 
+                            $price[$i] = $row['price'];
+                            $image[$i]= $row['imgURL'];
+                            $description[$i]=$row['description'];
+                            $i=$i+1;
+                            }
+                        }
+                    }
+                    ?>
+
+                    <?php
+                        echo '<div id="gunkan" style="padding-top: 20px;">';
+                        //echo '<h1>Gunkan</h1>';
+
+                    $c = 0;
+                    for ($i=$k; $i<count($items); $i++)
+                        {
+                            if ($c == 0) {
+                                echo '<div class="menu-item_row">';
+                            }
+                            echo
+                            '
+                            <div class="menu-item">
+                            <div id="'.$items[$k].'container" onclick="';
+                            echo "modalFunc('".$itemsName[$k]."',".$price[$k].",'".$image[$k]."',".$id[$k].",'".$description[$k]."')";
+                            echo
+                            '"><img src="'.$image[$k].'"><div>'.$itemsName[$k].'</div>
+                            </div> 
+                            </div>
+                            ';
+
+                            if ($c==2) {
+                                echo '</div>';
+                                $c = 0;
+                            }
+                            else {
+                                $c++;
+                            }
+                            $k++;
+                        }
+                    ?>
+
+
+
+                </div>
+            </div>
+
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                <form action="./php/add_to_cart.php" method="post">
+                    <div id="modal-picture" class="modal-col1"><img src="assets/menu/dummy.jpg"></div>
+
+                    <div id="modal-details" class="modal-col2">
+                        <div id="modal-item-name"><h1>Item Name</h1></div>
+                        <div id="modal-item-price"><h2>Item Price</h2></div>
+                        <div id="modal-item-description"><h4>Description</h4></div>
+                        
+                        <hr>
+                        <h4>Quantity: </h4><input type="number" class="input-number" name="quantity" value=1 id="quantity" onchange="checkQuantity()">
+                        <input type="number" value=0 id="itemId" name="itemId"><br>
+                        <input type="submit" id="submit" class="submit" value="ADD TO CART">   
+                    </div>
+
+                    <div id="modal-close" class="modal-col3"><span class="close">&times;</span></div>
+                </form>    
+                </div>
+            </div>
+
     </div> 
 
 
