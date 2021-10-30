@@ -52,10 +52,9 @@
 									<a href="payment.php"><h1>PAYMENT</h1></a>
 								</td>
 						</tr>
- 
+                    </table>
 		</div>
 	</div>
-</body>
     <!-- Footer -->
     <footer class='footer'>
         <div class="footer-content">
@@ -68,5 +67,6 @@
         <div class="copyright">
             &copy; 2021 - Pizza and Co. All Rights reserved. Address.
         </div>
-    </footer>
+        </footer>
+</body>
 </html>
