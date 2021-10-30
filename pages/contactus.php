@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shopping website</title>
-        <link rel="stylesheet" href="../css/index.css"/>
-        <link rel="stylesheet" href="../css/nav.css"/>
-        <link rel="stylesheet" href="../css/footer.css"/>
-        <link rel="stylesheet" href="../css/content.css"/>
+        <link rel="stylesheet" href="index.css"/>
+        <link rel="stylesheet" href="nav.css"/>
+        <link rel="stylesheet" href="footer.css"/>
+        <link rel="stylesheet" href="contactus.css"/>
 </head>
 <body>
     <!-- Nav Bar -->
@@ -16,7 +16,7 @@
         <div class="nav-content">
             <div class="logo">
                 <a href="../pages/index.php">
-                    <img src="../asset/photo/logo.png"/>
+                    <img src="logo.png"/>
                 </a>
             </div>
             <div class="right-content">
@@ -24,25 +24,52 @@
                     <li><a href="menu.php">MENU</a><li>
                     <li><a href="locations.php">LOCATIONS</a><li>
                     <li><a href="contactus.php">CONTACT US</a><li>
-                    <li><a href="order.php"><img src="../asset/photo/button-order2.png"></a><li>
+                    <li><a href="order.php"><img src="button-order2.png"></a><li>
                 </ul>
             </div>  
         </div>
     </nav>   
-
     <!-- Main Body -->
     <div class="container">
         <header>
-        <img src="../asset/photo/contactus.png" style="width:100%">
+        <img src="contactus.png" style="width:100%">
         </header>
         <div style="text-align: center">
-            <p>Testing
-                 
-            </p>
+		<h1>Contact Us</h1>	
+                 <form>
+
+					<label>
+						<input type="text" class="input" name="name" placeholder="ENTER NAME"/>
+							<div class="line-box">
+								<div class="line"></div>
+							</div>
+					</label>
+
+					<label>
+						<input type="text" class="input" name="email" placeholder="ENTER EMAIL"/>
+							<div class="line-box">
+								<div class="line"></div>
+							</div>
+					</label>
+
+					<label>
+						<input type="text" class="input" name="subject" placeholder="ENTER SUBJECT"/>
+							<div class="line-box">
+								<div class="line"></div>
+							</div>
+					</label>
+
+					<label>
+						<input type="text" rows="5" class="input" name="message" placeholder="ENTER MESSAGE"/>
+							<div class="line-box">
+								<div class="line"></div>
+							</div>
+					</label>
+
+					<button type="submit">SUBMIT</button>
+				</form>
         </div>
     </div> 
-
-
     <!-- Footer -->
     <footer class='footer'>
         <div class="footer-content">
