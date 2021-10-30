@@ -21,9 +21,9 @@
             </div>
             <div class="right-content">
                 <ul>
-                    <li><a href="menu.php">MENU</a><li>
-                    <li><a href="locations.php">LOCATIONS</a><li>
-                    <li><a href="contactus.php">CONTACT US</a><li>
+                   <li><a href="menu.php"><b>MENU</b></a><li>
+                    <li><a href="locations.php"><b>LOCATIONS</b></a><li>
+                    <li><a href="contactus.php"><b>CONTACT US</b></a><li>
                     <li><a href="order.php"><img src="../asset/photo/button-order2.png"></a><li>
                 </ul>
             </div>  

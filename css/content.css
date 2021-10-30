@@ -21,7 +21,6 @@
 	display: block;
 }
 
-
 .philosophy-card {
 	display: inline-block;
 	width: 33.33%;
@@ -36,11 +35,13 @@
 /* Locations */
 
 .location-contatiner{
-	margin: auto;
+	margin-top: 20px;
+	display: block;
 }
 
 
 .location-sub-contatiner{
 	display: inline-block;
-	margin: auto;
+	width: 30%;
+	margin: 30px 20px;
 }
