@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="../css/index.css"/>
         <link rel="stylesheet" href="../css/nav.css"/>
         <link rel="stylesheet" href="../css/footer.css"/>
-        <link rel="stylesheet" href="../css/category.css"/>
+        <link rel="stylesheet" href="../css/content.css"/>
 </head>
 <body>
     <!-- Nav Bar -->
@@ -36,7 +36,7 @@
         <img src="../asset/photo/menu.png" style="width:100%">
         </header>
         <div style="text-align: center">
-            <p>Testing
+            <p>Testing 123
                  
             </p>
         </div>
