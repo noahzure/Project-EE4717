@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="../css/nav.css"/>
         <link rel="stylesheet" href="../css/footer.css"/>
         <link rel="stylesheet" href="../css/content.css"/>
+        <link rel="stylesheet" href="../css/menu.css"/>
 </head>
 <body>
     <!-- Nav Bar -->
@@ -62,7 +63,11 @@
 
                 <?php
 
+<<<<<<< HEAD
                     $sql = "SELECT * FROM menu WHERE type='Maki'";
+=======
+                    $sql = "SELECT * FROM menu LIMIT 10";
+>>>>>>> 71abc8435755c912ee03b598a9b1272f7fd70a07
                     $result = mysqli_query($conn, $sql);
 
                     if (mysqli_num_rows($result) > 0) {
@@ -114,6 +119,7 @@
                         }
                         
                     ?>
+<<<<<<< HEAD
                 <!--</div>-->
                 <?php
 
@@ -332,6 +338,8 @@
                     ?>
 
 
+=======
+>>>>>>> 71abc8435755c912ee03b598a9b1272f7fd70a07
 
                 </div>
             </div>
@@ -339,6 +347,7 @@
             <div id="myModal" class="modal">
                 <div class="modal-content">
                 <form action="./php/add_to_cart.php" method="post">
+<<<<<<< HEAD
                     <div id="modal-picture" class="modal-col1"><img src="assets/menu/dummy.jpg"></div>
 
                     <div id="modal-details" class="modal-col2">
@@ -348,6 +357,17 @@
                         
                         <hr>
                         <h4>Quantity: </h4><input type="number" class="input-number" name="quantity" value=1 id="quantity" onchange="checkQuantity()">
+=======
+                    <div id="modal-picture" class="modal-col1"><img src="assets/menu/dummy.jpg">
+                    </div> 
+                    <div id="modal-details" class="modal-col2">
+                        <div id="modal-item-name" style="padding-top:10px"><h1>Item Name</h1></div>
+                        <div id="modal-item-price" style="padding-top:10px"><h2>Item Price</h2></div>
+                        <div id="modal-item-description" style="padding-top:10px; padding-bottom:10px"><h4>Description</h4></div>
+                        
+                        <hr>
+                        <h4 style="padding-top:10px">Quantity: </h4><input type="number" class="input-number" name="quantity" value=1 id="quantity" onchange="checkQuantity()">
+>>>>>>> 71abc8435755c912ee03b598a9b1272f7fd70a07
                         <input type="number" value=0 id="itemId" name="itemId"><br>
                         <input type="submit" id="submit" class="submit" value="ADD TO CART">   
                     </div>
@@ -356,8 +376,15 @@
                 </form>    
                 </div>
             </div>
+<<<<<<< HEAD
 
     </div> 
+=======
+            <script type="text/javascript" src="../js/menu.js"></script>
+        </div>  
+    </div>
+    </div>
+>>>>>>> 71abc8435755c912ee03b598a9b1272f7fd70a07
 
 
     <!-- Footer -->
