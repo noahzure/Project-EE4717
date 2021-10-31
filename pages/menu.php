@@ -63,7 +63,7 @@
 
                 <?php
 
-                    $sql = "SELECT * FROM menu LIMIT 10";
+                    $sql = "SELECT * FROM menu LIMIT 12";
                     $result = mysqli_query($conn, $sql);
 
                     if (mysqli_num_rows($result) > 0) {
@@ -84,8 +84,8 @@
                     ?>
            
                     <?php
-                        echo '<div id="maki" style="padding-top: 20px;">';
-                        //echo '<h1>Maki</h1>';
+                        echo '<div style="padding-top: 50px;">';
+                        echo '<h1 style="padding-bottom:20px">MENU</h1>';
 
                        $c = 0;
                        for ($i=0; $i<count($items); $i++)
@@ -99,7 +99,7 @@
                             <div id="'.$items[$k].'container" onclick="';
                             echo "modalFunc('".$itemsName[$k]."',".$price[$k].",'".$image[$k]."',".$id[$k].",'".$description[$k]."')";
                             echo
-                            '"><img src="'.$image[$k].'"><div>'.$itemsName[$k].'</div>
+                            '"><img src="'.$image[$k].'" style="width:80%"><div style="margin-top:20px"><b>'.$itemsName[$k].'<b></div>
                             </div> 
                             </div>
                             ';
@@ -132,7 +132,7 @@
                         <hr>
                         <h4 style="padding-top:10px">Quantity: </h4><input type="number" class="input-number" name="quantity" value=1 id="quantity" onchange="checkQuantity()">
                         <input type="number" value=0 id="itemId" name="itemId"><br>
-                        <input type="submit" id="submit" class="submit" value="ADD TO CART">   
+                        <input type="submit" id="submit" class="submit" value="ADD TO ORDER">   
                     </div>
 
                     <div id="modal-close" class="modal-col3"><span class="close">&times;</span></div>
