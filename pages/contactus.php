@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="../css/nav.css"/>
         <link rel="stylesheet" href="../css/footer.css"/>
         <link rel="stylesheet" href="../css/contactus.css"/>
+        <script defer src="../js/formvalidation.js"></script>    
 </head>
 <body>
     <!-- Nav Bar -->
@@ -36,38 +37,32 @@
         </header>
         <div style="text-align: center">
 		<h1>Contact Us</h1>	
-                 <form>
+        <form action="show_post.php" method="post" id="contact-us">
 
-					<label>
-						<input type="text" class="input" name="name" placeholder="ENTER NAME"/>
-							<div class="line-box">
-								<div class="line"></div>
-							</div>
-					</label>
+            <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="ENTER NAME">
+                <span class="error" id="error-name"></span><br>
+            
+            <label for="email">Email</label>
+                <input type="text" id="email" name="email" placeholder="ENTER EMAIL">
+                <span class="error" id="error-email"></span><br>
 
-					<label>
-						<input type="text" class="input" name="email" placeholder="ENTER EMAIL"/>
-							<div class="line-box">
-								<div class="line"></div>
-							</div>
-					</label>
+            <label for="subject">Subject</label>
+                <select id="subject" name="subject">
+                    <option value="generalenquiry">General Enquiry</option>
+                    <option value="catering">Catering</option>
+                    <option value="feedback">Feedback</option>
+                    <option value="other">Other</option>
+                </select><br>
 
-					<label>
-						<input type="text" class="input" name="subject" placeholder="ENTER SUBJECT"/>
-							<div class="line-box">
-								<div class="line"></div>
-							</div>
-					</label>
+            <label for="message">Message</label>
+                <textarea id="message" name="message" placeholder="ENTER TEXT" style="height:200px"></textarea>
+                <span class="error" id="error-message"></span><br>
 
-					<label>
-						<input type="text" rows="5" class="input" name="message" placeholder="ENTER MESSAGE"/>
-							<div class="line-box">
-								<div class="line"></div>
-							</div>
-					</label>
+            <input type="submit" value="SUBMIT" id="submit-btn">
+            <span class="error" id="error-form"></span>
 
-					<button type="submit">SUBMIT</button>
-				</form>
+        </form>
         </div>
     </div> 
     <!-- Footer -->
