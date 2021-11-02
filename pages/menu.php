@@ -1,3 +1,13 @@
+<?php session_start(); ?>
+
+<?php
+if (!isset($_SESSION['cart']))
+{
+$_SESSION['cart'] = array();
+}
+?>  
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -121,7 +131,7 @@
 
             <div id="myModal" class="modal">
                 <div class="modal-content">
-                <form action="./php/add_to_cart.php" method="post">
+                <form action="../php/add_to_order.php" method="post">
                     <div id="modal-picture" class="modal-col1"><img src="assets/menu/dummy.jpg">
                     </div> 
                     <div id="modal-details" class="modal-col2">
