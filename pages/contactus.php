@@ -59,7 +59,7 @@
                 <textarea id="message" name="message" placeholder="ENTER TEXT" style="height:200px"></textarea>
                 <span class="error" id="error-message"></span><br>
 
-            <input type="submit" value="SUBMIT" id="submit-btn">
+            <input type="submit" value="SUBMIT" id="submit-btn"><br>
             <span class="error" id="error-form"></span>
 
         </form>

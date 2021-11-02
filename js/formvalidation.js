@@ -52,7 +52,7 @@
   * Listens to the <message> field and show error message on blur, if
   * applicable.
   */
- expContent.addEventListener('blur', (event) => {
+ messageContent.addEventListener('blur', (event) => {
    if (messageContent.value === '') {
      errorMessage.textContent = 'This field is compulsory!'
    } else if (isValidMessage(messageContent.value)) {
