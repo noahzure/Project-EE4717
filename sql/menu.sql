@@ -40,19 +40,19 @@ CREATE TABLE IF NOT EXISTS `menu` (
 -- Dumping data for table `menu`
 --
 
-INSERT INTO `menu` (`id`, `name`, `description`, `price`, `imgURL`, `availability`) VALUES
-(1, 'Romana ', 'Tomato Sauce, Mozzarella, Anchovies', 13, '../asset/menu-pic/menu1.png', 1),
-(2, 'Quattro Formaggi ', 'Mozzarella, Gorgonzola, Pecorino, Fontina', 15, '../asset/menu-pic/menu2.png', 1),
-(3, 'Pizza Bresaola', 'Air-Dried Beef, Tomato, Mozzarella, Arugula, Shaved Parmigiano Reggiano', 12, '../asset/menu-pic/menu3.png', 1),
-(4, 'Homemade Tagliatelle', 'with Wagyu Beef Bolognese', 10, '../asset/menu-pic/menu4.png', 1),
-(5, 'Jumbo Crab Ritagoni', 'Basil and Calabrian Chill Paste', 12, '../asset/menu-pic/menu5.png', 1),
-(6, 'Wagyu Meatball Ritagoni', 'in Traditional Napoletana Sauce', 12, '../asset/menu-pic/menu6.png', 1),
-(7, 'Oven-Baked Focaccia', 'with Tomatoes, Mozzarella and Anchovies', 4.5, '../asset/menu-pic/menu7.png', 1),
-(8, 'Truffle Roast Beef', 'Roast Beef with Cheddar Truffle Fondue, Beef Jus, Ricotta in a Ciabatta Loaf', 9.5, '../asset/menu-pic/menu8.png', 1),
-(9, 'Fried Calamari', 'with Spicy Tomato Basil Dip', 7, '../asset/menu-pic/menu9.png', 1),
-(10, 'Tiramisu', ' ', 5, '../asset/menu-pic/menu10.png', 1),
-(11, 'Ferrero Rocher', 'Hazelnut, Ferrero Rocher Crumble ', 4, '../asset/menu-pic/menu11.png', 1),
-(12, 'Salted Caramel Chocolate Cake', '', 4.5, '../asset/menu-pic/menu12.png', 1);
+INSERT INTO `menu` (`id`, `name`, `description`, `price`, `imgURL`) VALUES
+(1, 'Romana ', 'Tomato Sauce, Mozzarella, Anchovies', 13, '../asset/menu-pic/menu1.png'),
+(2, 'Quattro Formaggi ', 'Mozzarella, Gorgonzola, Pecorino, Fontina', 15, '../asset/menu-pic/menu2.png'),
+(3, 'Pizza Bresaola', 'Air-Dried Beef, Tomato, Mozzarella, Arugula, Shaved Parmigiano Reggiano', 12, '../asset/menu-pic/menu3.png'),
+(4, 'Homemade Tagliatelle', 'with Wagyu Beef Bolognese', 10, '../asset/menu-pic/menu4.png'),
+(5, 'Jumbo Crab Ritagoni', 'Basil and Calabrian Chill Paste', 12, '../asset/menu-pic/menu5.png'),
+(6, 'Wagyu Meatball Ritagoni', 'in Traditional Napoletana Sauce', 12, '../asset/menu-pic/menu6.png'),
+(7, 'Oven-Baked Focaccia', 'with Tomatoes, Mozzarella and Anchovies', 4.5, '../asset/menu-pic/menu7.png'),
+(8, 'Truffle Roast Beef', 'Roast Beef with Cheddar Truffle Fondue, Beef Jus, Ricotta in a Ciabatta Loaf', 9.5, '../asset/menu-pic/menu8.png'),
+(9, 'Fried Calamari', 'with Spicy Tomato Basil Dip', 7, '../asset/menu-pic/menu9.png'),
+(10, 'Tiramisu', ' ', 5, '../asset/menu-pic/menu10.png'),
+(11, 'Ferrero Rocher', 'Hazelnut, Ferrero Rocher Crumble ', 4, '../asset/menu-pic/menu11.png'),
+(12, 'Salted Caramel Chocolate Cake', '', 4.5, '../asset/menu-pic/menu12.png');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

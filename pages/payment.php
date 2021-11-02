@@ -1,3 +1,14 @@
+<?php session_start(); ?>
+
+<?php
+if (!isset($_SESSION['cart']))
+{
+$_SESSION['cart'] = array();
+}
+?>  
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,10 +45,24 @@
         <header>
         <img src="../asset/photo/payment.png" style="width:100%">
         </header>
+
+        <?php
+            $servername = "localhost";
+            $username = "f32ee";
+            $password = "f32ee";
+            $dbname = "f32ee";
+            // Create connection
+            $conn = mysqli_connect($servername, $username, $password, $dbname);
+            // Check connection
+            if (!$conn) {
+                die("Connection failed: " . mysqli_connect_error());
+            }
+        ?>
+
         <div style="text-align: center">
             <div class="checkout-page page">
                 <div class="title-container">
-                    <h1>Checkout</h1>
+                    <h1><b>CHECKOUT</b></h1>
                 </div>
                 <div class="checkout-content content">
                     <div class="order-summary">
@@ -45,26 +70,98 @@
                         <table class="order-summary-table">
                             <thead>
                                 <tr>
-                                    <th>Product</th>
-                                    <th>Unit Price</th>
-                                    <th>Amount</th>
+                                    <th>Food</th>
+                                    <th>Name</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
                                     <th>Subtotal Price</th>
                                 </tr>   
                             </thead>
                             <tbody>
-                                <tr>
-                                <td class="product-col"> 
-                                            Pizza
-                                        </td>
-                                        <td>2.00</td>
-                                        <td>1</td>
-                                        <td>2.00</td>
-                                </tr>    
- 
+
+                            <?php
+                                $allPrice=0;
+                                for ($i=0; $i<count($_SESSION['cart']); $i++)
+                                {
+                                    
+                                    if ($_SESSION['cart'][array_keys($_SESSION['cart'])[$i]]>0)
+                                    {   
+
+                                        $sql = "SELECT * FROM menu where id=".array_keys($_SESSION['cart'])[$i];
+                                        $result = mysqli_query($conn, $sql);
+                                        $item=array();
+                                        if (mysqli_num_rows($result) > 0) {
+                                            // output data of each row
+                                            while($row = mysqli_fetch_assoc($result)) 
+                                            {
+                                                
+                                                $rowId ='ItemWithId' .array_keys($_SESSION['cart'])[$i];
+                                                $quantityId = 'quantity'.$rowId;
+                                                $priceId ='price'.$rowId;
+                                                $totalPriceId ='totalPrice'.$rowId;
+                                                $itemNoId = 'itemNo'.$rowId;
+                                                $deleteId ='delete'.$rowId;
+                                                $saveId ='save'.$rowId;
+
+                                                echo "<tr id='".$rowId."'>";
+
+
+                                                echo "<td class='td-center'><img src=".$row['imgURL']." style='width:25%' ><input type='number' class='input-number' value=".array_keys($_SESSION['cart'])[$i]." id='itemNoId' name='itemNoId'";
+                                                echo 'style="display:none"';
+                                                echo" ></td>";
+
+                                                echo "<td class='td-left'>" .$row['name']. "</td>";
+
+                                                echo "<td id='".$priceId."'>" .$row['price']. "</td>";  
+
+                                                echo "<td>" .$_SESSION['cart'][array_keys($_SESSION['cart'])[$i]]. "</td>";
+
+                                                echo '</td>';
+
+                                                echo'</form>';
+
+                                                $totalPrice = $row['price']*$_SESSION['cart'][array_keys($_SESSION['cart'])[$i]];
+
+                                                echo "<td class='td-center' id='".$totalPriceId."'>".$totalPrice."</td>";
+
+                                                echo "<input type='number' value=".array_keys($_SESSION['cart'])[$i]." id='itemNoId' name='itemNoId'";
+                                                echo 'style="display:none"';
+                                                echo" >";
+                                                
+                                                echo "</tr>";
+                                                $allPrice = $allPrice +$totalPrice;
+                                                $gstPrice = $allPrice *0.07;
+                                                $dlvPrice = 7;
+                                                $finalPrice = $allPrice + $gstPrice + $dlvPrice;
+                                                
+
+                                            }
+                                        }
+
+
+                                    }
+                                    else
+                                    {
+                                        $_SESSION['cart'][array_keys($_SESSION['cart'])[$i]]=0;
+                                    }
+                
+
+                                }
+                            ?>
+
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <td colspan="4" class="total-price">Order Total: <span>2.00</span></td>
+                                <td colspan="5" class="total-price">Total Price: <span> $<?=$allPrice; ?></span></td>
+                                </tr>
+                                <tr>
+                                <td colspan="5" class="total-price">GST (7%): <span> $<?=$gstPrice; ?></span></td>
+                                </tr>
+                                <tr>
+                                <td colspan="5" class="total-price">Delivery: <span> $<?=$dlvPrice; ?></span></td>
+                                </tr>   
+                                <tr>
+                                <td colspan="5" class="total-price">Final Total Price: <span> $<?=$finalPrice; ?></span></td>
                                 </tr>   
                             </tfoot>
                         </table>
@@ -75,7 +172,7 @@
                 <div class="checkout-content content">
                     <div class="customer-details">
                         <h2>Customer Details</h2>
-                        <form method="POST" action="../php/placeOrder.php" id="place-order-form" onsubmit="return handleSubmit()">
+                        <form method="POST" action="../php/place_order.php" id="place-order-form" onsubmit="return handleSubmit()">
                             <table class="customer-details-table">
                                 <tr>
                                     <td class="label">Full Name</td>
@@ -175,6 +272,7 @@
                     modal2.style.display = "block";
                 
             </script>
+            
             <!-- Footer -->
     <footer class='footer'>
         <div class="footer-content">
