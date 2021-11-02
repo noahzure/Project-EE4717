@@ -47,6 +47,50 @@
                                 <th>Action</th>
                             </tr>   
                         </thead>
+                        <tbody>
+                                    <tr>
+                                        <td class="product-col"> 
+                                            Pizza
+                                        </td>
+                                        <td>2.00</td>
+                                        <td>1</td>
+                                        <td>2.00</td>
+                                        <td>
+                                            <form action="../php/delFromCart.php"method="POST">
+                                                <input type="hidden" value="'. $row['productId']. '" name="product_id" />
+                                                <input type="hidden" value="'. $row['orderId']. '" name="order_id" />
+                                                <input type="submit" class="delete-btn" value="Delete" />
+                                            </form>
+                                        </td>
+                                    </tr>
+                                
+                            
+                            
+                        </tbody>
+                        <tfoot>
+                            <?php 
+                                if($result->num_rows > 0){
+                                    echo '
+                                    <tr>
+                                        <td colspan="5" class="total-price">Total Price: <span> $'.$total.'</span></td>
+                                        <td>
+                                            <form action="../pages/checkout.php" method="POST">
+                                            <input type="hidden" value="<?php echo $total; ?>" name="total" />
+                                            <input type="hidden" value="<?php echo $order_id; ?>" name="order_id" />
+                                            <input type="submit" class="checkout-btn" value="Checkout" />
+                                        </td>
+                                    </tr> ';
+                                }
+                                else{
+                                    echo '
+                                    <tr>
+                                        <td class="no-product" colspan="6">No Product added to cart</td>
+                                    </tr>
+                                    ';
+                                }
+                            ?>
+                             
+                        </tfoot>
 						<tr>
 								<td colspan="10">
 									<a href="payment.php"><h1>PAYMENT</h1></a>
