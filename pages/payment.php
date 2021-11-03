@@ -209,10 +209,10 @@ $_SESSION['cart'] = array();
                                     <td></td>
                                     <td colspan="2">
                                         <div class="total-payment">
-                                            <input type="hidden" name="totalAmount" value="1.00"/>
-                                            <input type="hidden" name="orderId" value="1.00"/>
-                                            <input type="hidden" name="custId" value="1.00"/>
-                                            <div>Total Payment: <span>$750</span></div>
+                                            <input type="hidden" name="totalAmount" value="<?php echo $total;?>"/>
+                                            <input type="hidden" name="orderId" value="<?php echo $orderId;?>"/>
+                                            <input type="hidden" name="custId" value="<?php echo $uid;?>"/>
+                                            <div>Total Payment: <span>$<?=$finalPrice; ?></span></div>
                                             <button class="place-order-btn">Place Order</button>
                                         </div>
                                     </td>

@@ -140,11 +140,10 @@ INSERT INTO `orders` (`id`, `transaction_ID`, `menu_ID`, `quantity`) VALUES
 CREATE TABLE IF NOT EXISTS `transaction` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `customer_ID` int(10) NOT NULL,
-  `date` date NOT NULL,
-  `ship_address` varchar(100) NOT NULL,
-  `ship_postalCode` int(6) NOT NULL,
-  `note` varchar(140) NOT NULL,
-  `price` float NOT NULL,
+  `fullName` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `phoneNumber` int(10) NOT NULL,
+  `address` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `customer_ID` (`customer_ID`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
@@ -153,12 +152,12 @@ CREATE TABLE IF NOT EXISTS `transaction` (
 -- Dumping data for table `transaction`
 --
 
-INSERT INTO `transaction` (`id`, `customer_ID`, `date`, `ship_address`, `ship_postalCode`, `note`, `price`) VALUES
-(1, 1, '2018-11-01', '1234a4t adfjadf asdfda', 0, '', 0),
-(2, 1, '2018-11-01', '1234a4t adfjadf asdfda', 0, '', 0),
-(3, 1, '2018-11-01', '1234a4t adfjadf asdfda', 0, '', 0),
-(4, 1, '2018-11-01', '1234a4t adfjadf asdfda', 0, '', 15),
-(5, 1, '2018-11-01', '1234a4t adfjadf asdfda', 0, '', 18.445);
+INSERT INTO `transaction` (`id`, `customer_id`, `fullName`, `email`, `phoneNumber`, `address`) VALUES
+(1, 1, 'Eugene', 'eugene@gmail.com', 12345678, 'krusty krab'),
+(2, 1, 'Eugene', 'eugene@gmail.com', 12345678, 'krusty krab'),
+(3, 1, 'Eugene', 'eugene@gmail.com', 12345678, 'krusty krab'),
+(4, 1, 'Eugene', 'eugene@gmail.com', 12345678, 'krusty krab'),
+(5, 1, 'Eugene', 'eugene@gmail.com', 12345678, 'krusty krab');
 
 --
 -- Constraints for dumped tables

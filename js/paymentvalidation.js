@@ -4,7 +4,7 @@ const validatePlaceOrder = ({fullName, email, phoneNumber, address, nameOnCard, 
 
     if(!fullName || !email || !phoneNumber || !address || !nameOnCard || !creditCardNumber || !creditCardExpiresOn || !cvv){
         isValidated = false
-        errorMessage = 'Please input all the field'
+        errorMessage = 'Please fill up the required fields'
     }
     //validate full name and name on card
     else if(!(/^([a-zA-Z]|[a-zA-Z][a-zA-Z ]*[a-zA-Z])$/.test(fullName)) || !(/^([a-zA-Z]|[a-zA-Z][a-zA-Z ]*[a-zA-Z])$/.test(nameOnCard))){
@@ -15,22 +15,27 @@ const validatePlaceOrder = ({fullName, email, phoneNumber, address, nameOnCard, 
     //check for email field
     else if(!(/^[a-zA-Z-.0-9]+@([a-zA-Z0-9]+\.){1,3}[a-zA-Z0-9]{2,3}$/.test(email))){
         isValidated = false
-        errorMessage = 'Please input a correct email'
+        errorMessage = 'Please enter a valid email'
     }
-     //check for credit card number
-     else if(!(/\d{16}$/.test(creditCardNumber))){
+     //check for phone number
+     else if(!(/^\d{8,}$/.test(phoneNumber))){
         isValidated = false
-        errorMessage = 'Please input a correct credit card number'
+        errorMessage = 'Please enter a valid phone number'
+     }    
+     //check for credit card number
+     else if(!(/^\d{16}$/.test(creditCardNumber))){
+        isValidated = false
+        errorMessage = 'Please enter a valid credit card number'
     }
     //check for credit card expires on
-    else if(!(/(0[1-9]|10|11|12)\/[2-9][0-9]$/.test(creditCardExpiresOn))){
+    else if(!(/(0[1-9]|10|11|12)\/[2-9][1-9]$/.test(creditCardExpiresOn))){
         isValidated = false
-        errorMessage = 'Please input a correct credit card expired date'
+        errorMessage = 'Please enter a valid credit card expired date'
     }
     //check for cvv
     else if(!(/^\d{3}$/.test(cvv))){
         isValidated = false
-        errorMessage = 'Please input a correct CVV'
+        errorMessage = 'Please enter a valid CVV'
     }
 
     if(!isValidated){
