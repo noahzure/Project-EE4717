@@ -80,7 +80,6 @@ $_SESSION['cart'] = array();
                         // output data of each row
                         
                         while($row = mysqli_fetch_assoc($result)) {
-                            if ($row['availability']>0){
                                 $id[$i]=$row['id'];
                                 $itemsName[$i]=$row['name'];
                                 $items[$i] =  str_replace(' ', '', $itemsName[$i]); 
@@ -88,7 +87,6 @@ $_SESSION['cart'] = array();
                                 $image[$i]= $row['imgURL'];
                                 $description[$i]=$row['description'];
                                 $i=$i+1;
-                            }
                         }
                     }
                     ?>
