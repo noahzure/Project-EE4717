@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="../css/nav.css"/>
         <link rel="stylesheet" href="../css/footer.css"/>
         <link rel="stylesheet" href="../css/contactus.css"/>
-        <script defer src="../js/formvalidation.js"></script>    
+        <script defer src="../js/ContactUsValidator.js"></script>    
 </head>
 <body>
     <!-- Nav Bar -->
