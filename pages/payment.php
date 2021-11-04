@@ -1,3 +1,14 @@
+<?php session_start(); ?>
+
+<?php
+if (!isset($_SESSION['cart']))
+{
+$_SESSION['cart'] = array();
+}
+?>  
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +20,7 @@
         <link rel="stylesheet" href="../css/nav.css"/>
         <link rel="stylesheet" href="../css/footer.css"/>
         <link rel="stylesheet" href="../css/payment.css"/>
+        <script type="text/javascript" src="../js/confirmation.js"> </script>
 </head>
 <body>
     <!-- Nav Bar -->
@@ -34,96 +46,187 @@
         <header>
         <img src="../asset/photo/payment.png" style="width:100%">
         </header>
+
+        <?php
+            $servername = "localhost";
+            $username = "f32ee";
+            $password = "f32ee";
+            $dbname = "f32ee";
+            // Create connection
+            $conn = mysqli_connect($servername, $username, $password, $dbname);
+            // Check connection
+            if (!$conn) {
+                die("Connection failed: " . mysqli_connect_error());
+            }
+        ?>
+
         <div style="text-align: center">
- <div class="checkout-content content">
-                 <div class="row">
-  <div class="col-75">
-    <div class="container">
-	  <div class="col-25">
-    <div class="container">
-      <h4>Order Summary
-        <span class="price" style="color:black">
-          <i class="fa fa-shopping-cart"></i>
-          <b>4</b>
-        </span>
-      </h4>
-      <p><a href="#">Product 1</a> <span class="price">$15</span></p>
-      <p><a href="#">Product 2</a> <span class="price">$5</span></p>
-      <p><a href="#">Product 3</a> <span class="price">$8</span></p>
-      <p><a href="#">Product 4</a> <span class="price">$2</span></p>
-      <hr>
-      <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
-    </div>
-  </div>
-      <form action="/action_page.php">
+            <div class="checkout-page">
+                <div class="title-container" style="margin: 50px 0">
+                    <h1><b>CHECKOUT</b></h1>
+                </div>
+                <div class="checkout-content content">
+                    <div class="order-summary" style="background-color: #f7f5f5; padding:10px; margin-top:10px">
+                        <h2>Order summary</h2>
+                        <table class="order-summary-table" style ="width:90%; margin: 20px auto">
+                            <thead>
+                                <tr>
+                                    <th>Food</th>
+                                    <th>Name</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Subtotal Price</th>
+                                </tr>   
+                            </thead>
+                            <tbody>
 
-        <div class="row">
-          <div class="col-50">
-            <h3>Billing Address</h3>
-            <label for="fname"><i class="fa fa-user"></i> Full Name</label>
-            <input type="text" id="fname" name="firstname" placeholder="John M. Doe">
-            <label for="email"><i class="fa fa-envelope"></i> Email</label>
-            <input type="text" id="email" name="email" placeholder="john@example.com">
-            <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
-            <input type="text" id="adr" name="address" placeholder="542 W. 15th Street">
-            <label for="city"><i class="fa fa-institution"></i> City</label>
-            <input type="text" id="city" name="city" placeholder="New York">
+                            <?php
+                                $allPrice=0;
+                                for ($i=0; $i<count($_SESSION['cart']); $i++)
+                                {
+                                    
+                                    if ($_SESSION['cart'][array_keys($_SESSION['cart'])[$i]]>0)
+                                    {   
 
-            <div class="row">
-              <div class="col-50">
-                <label for="state">State</label>
-                <input type="text" id="state" name="state" placeholder="NY">
-              </div>
-              <div class="col-50">
-                <label for="zip">Zip</label>
-                <input type="text" id="zip" name="zip" placeholder="10001">
-              </div>
+                                        $sql = "SELECT * FROM menu where id=".array_keys($_SESSION['cart'])[$i];
+                                        $result = mysqli_query($conn, $sql);
+                                        $item=array();
+                                        if (mysqli_num_rows($result) > 0) {
+                                            // output data of each row
+                                            while($row = mysqli_fetch_assoc($result)) 
+                                            {
+                                                
+                                                $rowId ='ItemWithId' .array_keys($_SESSION['cart'])[$i];
+                                                $quantityId = 'quantity'.$rowId;
+                                                $priceId ='price'.$rowId;
+                                                $totalPriceId ='totalPrice'.$rowId;
+                                                $itemNoId = 'itemNo'.$rowId;
+                                                $deleteId ='delete'.$rowId;
+                                                $saveId ='save'.$rowId;
+
+                                                echo "<tr id='".$rowId."'>";
+
+
+                                                echo "<td class='td-center'><img src=".$row['imgURL']." style='width:25%; margin: 15px 0' ><input type='number' class='input-number' value=".array_keys($_SESSION['cart'])[$i]." id='itemNoId' name='itemNoId'";
+                                                echo 'style="display:none"';
+                                                echo" ></td>";
+
+                                                echo "<td class='td-left'>" .$row['name']. "</td>";
+
+                                                echo "<td id='".$priceId."'>" .$row['price']. "</td>";  
+
+                                                echo "<td>" .$_SESSION['cart'][array_keys($_SESSION['cart'])[$i]]. "</td>";
+
+                                                echo '</td>';
+
+                                                echo'</form>';
+
+                                                $totalPrice = $row['price']*$_SESSION['cart'][array_keys($_SESSION['cart'])[$i]];
+
+                                                echo "<td class='td-center' id='".$totalPriceId."'>".$totalPrice."</td>";
+
+                                                echo "<input type='number' value=".array_keys($_SESSION['cart'])[$i]." id='itemNoId' name='itemNoId'";
+                                                echo 'style="display:none"';
+                                                echo" >";
+                                                
+                                                echo "</tr>";
+                                                $allPrice = $allPrice +$totalPrice;
+                                                $gstPrice = $allPrice *0.07;
+                                                $dlvPrice = 7;
+                                                $finalPrice = $allPrice + $gstPrice + $dlvPrice;
+                                                
+
+                                            }
+                                        }
+
+
+                                    }
+                                    else
+                                    {
+                                        $_SESSION['cart'][array_keys($_SESSION['cart'])[$i]]=0;
+                                    }
+                
+
+                                }
+                            ?>
+
+                            </tbody>
+                            <tfoot style="margin-top:20px">
+                                <tr>
+                                <td colspan="5" class="total-price">Total Price: <span> $<?=$allPrice; ?></span></td>
+                                </tr>
+                                <tr>
+                                <td colspan="5" class="total-price">GST (7%): <span> $<?=$gstPrice; ?></span></td>
+                                </tr>
+                                <tr>
+                                <td colspan="5" class="total-price">Delivery: <span> $<?=$dlvPrice; ?></span></td>
+                                </tr>   
+                                <tr>
+                                <td colspan="5" name="finalPrice" class="total-price"><b>Grand Total:</b><span> $<?=$finalPrice; ?></span></td>
+                                </tr>   
+                            </tfoot>
+                        </table>
+                    </div>
+                    
+                </div>
+
+                <div class="checkout-content content" style="background-color: #f7f5f5; padding:10px; margin:50px 0;">
+                    <div class="customer-details">
+                        <h2>Customer Details</h2>
+                        <form method="POST" action="../php/place_order.php" id="place-order-form" onsubmit="return handleSubmit()">
+                            <table class="customer-details-table">
+                                <tr>
+                                    <td class="label">Full Name</td>
+                                    <td> <input type="text" placeholder="Your full name" name="fullName" value="<?php echo $customerDetails['fullName']; ?>" required/> </td>
+                                    <td class="label">Payment Method</td>
+                                    <td><input type="radio" checked name="paymentMethod"/> Credit Card</td>
+                                </tr>
+                                <tr>
+                                    <td class="label">Email</td>
+                                    <td> <input type="email" placeholder="Your email address" name="email" value="<?php echo $customerDetails['email']; ?>" required/> </td>
+                                    <td class="label">Name on card</td>
+                                    <td> <input type="text" placeholder="Your name on card" name="nameOnCard" required/> </td>
+                                </tr>
+                                <tr>
+                                    <td class="label">Phone Number</td>
+                                    <td> <input type="text" placeholder="Your phone number" name="phoneNumber" value="<?php echo $customerDetails['phoneNumber']; ?> " required/> </td>
+                                    <td class="label">Credit card No.</td>
+                                    <td> <input type="text" placeholder="Credit card number" name="creditCardNumber" required/> </td>
+                                </tr>
+                                <tr>
+                                    <td class="label">Address</td>
+                                    <td> <input type="text" placeholder="Your address" name="address" value="<?php echo $customerDetails['address']; ?> " required/> </td>
+                                    <td class="label">Expires on</td>
+                                    <td> <input type="text" placeholder="MM/YY" name="creditCardExpires" required/> </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td class="label">CVV</td>
+                                    <td> <input type="text" placeholder="CVV" name="cvv" required/> </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td colspan="2">
+                                        <div class="total-payment">
+                                            <input type="hidden" name="finalPrice" value="<?php echo $finalPrice;?>"/>
+                                            <input type="hidden" name="orderId" value="<?php echo $orderId;?>"/>
+                                            <input type="hidden" name="custId" value="<?php echo $uid;?>"/>
+                                            <div>Grand Total: <span>$<?=$finalPrice; ?></span></div>
+                                            <button class="place-order-btn" onclick="confirmSubmit()">Place Order</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                   
+                    </div>
+                </div>
             </div>
-          </div>
 
-          <div class="col-50">
-            <h3>Payment</h3>
-            <label for="fname">Accepted Cards</label>
-            <div class="icon-container">
-              <i class="fa fa-cc-visa" style="color:navy;"></i>
-              <i class="fa fa-cc-amex" style="color:blue;"></i>
-              <i class="fa fa-cc-mastercard" style="color:red;"></i>
-              <i class="fa fa-cc-discover" style="color:orange;"></i>
-            </div>
-            <label for="cname">Name on Card</label>
-            <input type="text" id="cname" name="cardname" placeholder="John More Doe">
-            <label for="ccnum">Credit card number</label>
-            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
-            <label for="expmonth">Exp Month</label>
-            <input type="text" id="expmonth" name="expmonth" placeholder="September">
-
-            <div class="row">
-              <div class="col-50">
-                <label for="expyear">Exp Year</label>
-                <input type="text" id="expyear" name="expyear" placeholder="2018">
-              </div>
-              <div class="col-50">
-                <label for="cvv">CVV</label>
-                <input type="text" id="cvv" name="cvv" placeholder="352">
-              </div>
-            </div>
-          </div>
-
-        </div>
-        <label>
-          <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
-        </label>
-        <input type="submit" value="Continue to checkout" class="btn">
-      </form>
-    </div>
-  </div>
-
-
-</div>
-        </div>
-    </div> 
-</div>	
-    <!-- Footer -->
+           
+            <!-- Footer -->
     <footer class='footer'>
         <div class="footer-content">
             <div class="social-media">
@@ -136,5 +239,36 @@
             &copy; 2021 - Pizza and Co. All Rights reserved. Address.
         </div>
     </footer>
-</body>
+    </body>
+
+    <script src="../js/paymentvalidation.js"></script>
+    <script>
+    function handleSubmit(){
+        let form = document.querySelector('#place-order-form')
+
+        try {
+            let form = document.querySelector('#place-order-form')
+            let fullName = form.querySelector('input[name="fullName"]').value
+            let email = form.querySelector('input[name="email"]').value
+            let phoneNumber = form.querySelector('input[name="phoneNumber"]').value
+            let address = form.querySelector('input[name="address"]').value
+            let nameOnCard = form.querySelector('input[name="nameOnCard"]').value
+            let creditCardNumber = form.querySelector('input[name="creditCardNumber"]').value
+            let creditCardExpiresOn = form.querySelector('input[name="creditCardExpires"]').value
+            let cvv = form.querySelector('input[name="cvv"]').value
+
+            let isValidated = validatePlaceOrder({
+                fullName, email, phoneNumber, address, nameOnCard, creditCardNumber, creditCardExpiresOn, cvv
+            })
+            console.log('isValidated:' ,isValidated)
+            return isValidated
+        }
+        catch(err) {
+            console.log(err)
+            return false
+        }
+        return false
+    }
+    </script> 	
+ 
 </html>

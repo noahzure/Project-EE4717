@@ -1,85 +1,194 @@
-.row {
-  display: -ms-flexbox; /* IE10 */
+.checkout-page .checkout-content h2{
+  margin-top: 30px;
+  margin-bottom: 20px;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.checkout-page .order-summary-table{
+  width: 100%;
+  border-radius: 8px;
+  border-collapse: collapse;
+}
+
+.checkout-page .order-summary-table tr{
+  text-align: center;
+}
+
+.checkout-page .order-summary-table thead{
+  background-color: #c4c4c4;
+}
+.checkout-page .order-summary-table th{
+  padding: 10px 20px;
+  font-weight: 500;
+  color: #424242;
+}
+
+.checkout-page .order-summary-table tr td{
+  padding:10px 20px;
+}
+
+
+.checkout-page .order-summary-table .product-col{
+display: flex;
+align-items: center;
+}
+.checkout-page .order-summary-table .product-col img{
+  width: 100px;
+  vertical-align: middle;
+  margin-right: 16px;
+}
+
+.checkout-page .order-summary-table .total-price{
+  text-align: right;
+  font-size: 18px;
+}
+.checkout-page .order-summary-table .total-price span{
+  font-weight: bold;
+}
+
+.checkout-page .order-summary-table tfoot tr:first-child{
+  border-top: 1px solid lightgrey;
+  height: 30px;
+  padding-top: 10px;
+}
+
+.checkout-page .customer-details-table, .checkout-page .customer-details-table tr{
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.checkout-page .customer-details-table tr td{
+  padding:10px 20px;
+}
+
+.checkout-page .customer-details-table input{
+  width: 100%;
+  background-color: #ffffff;
+  border:0;
+  border-radius: 8px;
+  height: 36px;
+  padding-left: 12px;
+  font-size: 16px;
+  vertical-align: middle;
+}
+.checkout-page .customer-details-table input[type='radio']{
+  width: auto;
+  margin-right: 10px;
+}
+.checkout-page .customer-details-table .label{
+  color: #333333;
+}
+
+.checkout-page .customer-details-table button{
+  width: 150px;
+  height: 40px;
+  border: 0;
+  border-radius: 8px;
+  color:white;
+  font-size: 16px;
+  background-color: #3DA300;
+}
+
+.checkout-page .customer-details-table button:hover{
+  background-color: #00d41c;
+}
+
+.checkout-page .customer-details-table .total-payment{
   display: flex;
-  -ms-flex-wrap: wrap; /* IE10 */
-  flex-wrap: wrap;
-  margin: 0 -16px;
+  justify-content: flex-end;
+  align-items: center;
+  gap:20px;
+  padding-top: 20px;
 }
-
-.col-25 {
-  -ms-flex: 25%; /* IE10 */
-  flex: 25%;
-}
-
-.col-50 {
-  -ms-flex: 50%; /* IE10 */
-  flex: 50%;
-}
-
-.col-75 {
-  -ms-flex: 75%; /* IE10 */
-  flex: 75%;
-}
-
-.col-25,
-.col-50,
-.col-75 {
-  padding: 0 16px;
-}
-
-.container {
-  background-color: #f2f2f2;
-  padding: 5px 20px 15px 20px;
-  border: 1px solid lightgrey;
-  border-radius: 3px;
-}
-
-input[type=text] {
-  width: 100%;
-  margin-bottom: 20px;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-}
-
-label {
-  margin-bottom: 10px;
-  display: block;
-}
-
-.icon-container {
-  margin-bottom: 20px;
-  padding: 7px 0;
+.checkout-page .customer-details-table .total-payment >div{
   font-size: 24px;
+
+}
+.checkout-page .customer-details-table .total-payment >div span{
+  font-weight: bold;
 }
 
-.btn {
-  background-color: #04AA6D;
-  color: white;
-  padding: 12px;
-  margin: 10px 0;
-  border: none;
-  width: 100%;
-  border-radius: 3px;
-  cursor: pointer;
-  font-size: 17px;
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-.btn:hover {
-  background-color: #45a049;
-}
-
-span.price {
+  
+/* The Close Button */
+.close {
+  color: #aaa;
   float: right;
-  color: grey;
+  font-size: 28px;
+  font-weight: bold;
 }
 
-/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (and change the direction - make the "cart" column go on top) */
-@media (max-width: 800px) {
-  .row {
-    flex-direction: column-reverse;
-  }
-  .col-25 {
-    margin-bottom: 20px;
-  }
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.modal-header-success, .modal-header-unsuccess {
+  padding: 2px 16px;
+  
+  color: white;
+  font-size: 30px;
+  font-weight: 300;
+  text-align: center;
+}
+.modal-header-success{
+  background-color: #5cb85c;
+}
+.modal-header-unsuccess{
+  background-color: #d86060;
+}
+/* Modal Body */
+.modal-body {
+    padding: 16px 16px;
+    text-align: center;
+}
+
+/* Modal Footer */
+.modal-footer-success, .modal-footer-unsuccess {
+  padding: 16px 16px;
+  text-align: center;
+  color: white;
+}
+.modal-footer-success{
+  background-color: #5cb85c;
+}
+.modal-footer-unsuccess {
+  background-color: #d86060;
+}
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 42%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  animation-name: animatetop;
+  animation-duration: 0.7s;
+  margin-top: 20%;
+}
+
+/* Add Animation */
+@keyframes animateto {
+  from {top: -300px; opacity: 0}
+  to {top: 0; opacity: 1}
+}
+@keyframes animatetop {
+  from {opacity: 0}
+  to {opacity: 1}
 }

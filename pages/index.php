@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopping website</title>
+    <title>Pizza and Co.</title>
         <link rel="stylesheet" href="../css/index.css"/>
         <link rel="stylesheet" href="../css/nav.css"/>
         <link rel="stylesheet" href="../css/footer.css"/>
@@ -50,17 +50,14 @@
                     <div class="philosophy-card">
                         <br><h3>Fresh Ingredients</h3><br>
                         <img src="../asset/photo/home2.jpeg">
-                        <p style="margin-top: 20px;">30 minutes guaranteed, or meal will be free.</p>
                     </div>
                     <div class="philosophy-card">
                         <br><h3>Authentic recipe from Italy</h3><br>
                         <img src="../asset/photo/home3.jpeg">
-                        <p style="margin-top: 20px;">30 minutes guaranteed, or meal will be free.</p>
                     </div>
                     <div class="philosophy-card">
                         <br><h3>Customer First</h3><br>
                         <img src="../asset/photo/home 4.jpeg">
-                        <p style="margin-top: 20px;">30 minutes guaranteed, or meal will be free.</p>
                     </div>
                 </div>
 

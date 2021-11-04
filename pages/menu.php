@@ -1,10 +1,20 @@
+<?php session_start(); ?>
+
+<?php
+if (!isset($_SESSION['cart']))
+{
+$_SESSION['cart'] = array();
+}
+?>  
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopping website</title>
+    <title>Pizza and Co.</title>
         <link rel="stylesheet" href="../css/index.css"/>
         <link rel="stylesheet" href="../css/nav.css"/>
         <link rel="stylesheet" href="../css/footer.css"/>
@@ -64,17 +74,20 @@
                 <?php
 
 <<<<<<< HEAD
+<<<<<<< HEAD
                     $sql = "SELECT * FROM menu WHERE type='Maki'";
 =======
                     $sql = "SELECT * FROM menu LIMIT 10";
 >>>>>>> 71abc8435755c912ee03b598a9b1272f7fd70a07
+=======
+                    $sql = "SELECT * FROM menu";
+>>>>>>> a9199ab62d24b9e89956e28f1a5f07b1f0de094e
                     $result = mysqli_query($conn, $sql);
 
                     if (mysqli_num_rows($result) > 0) {
                         // output data of each row
                         
                         while($row = mysqli_fetch_assoc($result)) {
-                            if ($row['availability']>0){
                                 $id[$i]=$row['id'];
                                 $itemsName[$i]=$row['name'];
                                 $items[$i] =  str_replace(' ', '', $itemsName[$i]); 
@@ -82,14 +95,13 @@
                                 $image[$i]= $row['imgURL'];
                                 $description[$i]=$row['description'];
                                 $i=$i+1;
-                            }
                         }
                     }
                     ?>
            
                     <?php
-                        echo '<div id="maki" style="padding-top: 20px;">';
-                        //echo '<h1>Maki</h1>';
+                        echo '<div style="padding-top: 50px;">';
+                        echo '<h1 style="padding-bottom:20px">MENU</h1>';
 
                        $c = 0;
                        for ($i=0; $i<count($items); $i++)
@@ -103,7 +115,7 @@
                             <div id="'.$items[$k].'container" onclick="';
                             echo "modalFunc('".$itemsName[$k]."',".$price[$k].",'".$image[$k]."',".$id[$k].",'".$description[$k]."')";
                             echo
-                            '"><img src="'.$image[$k].'"><div>'.$itemsName[$k].'</div>
+                            '"><img src="'.$image[$k].'" style="width:80%"><div style="margin-top:20px"><b>'.$itemsName[$k].'<b></div>
                             </div> 
                             </div>
                             ';
@@ -346,6 +358,7 @@
 
             <div id="myModal" class="modal">
                 <div class="modal-content">
+<<<<<<< HEAD
                 <form action="./php/add_to_cart.php" method="post">
 <<<<<<< HEAD
                     <div id="modal-picture" class="modal-col1"><img src="assets/menu/dummy.jpg"></div>
@@ -358,6 +371,9 @@
                         <hr>
                         <h4>Quantity: </h4><input type="number" class="input-number" name="quantity" value=1 id="quantity" onchange="checkQuantity()">
 =======
+=======
+                <form action="../php/add_to_order.php" method="post">
+>>>>>>> a9199ab62d24b9e89956e28f1a5f07b1f0de094e
                     <div id="modal-picture" class="modal-col1"><img src="assets/menu/dummy.jpg">
                     </div> 
                     <div id="modal-details" class="modal-col2">
@@ -369,7 +385,7 @@
                         <h4 style="padding-top:10px">Quantity: </h4><input type="number" class="input-number" name="quantity" value=1 id="quantity" onchange="checkQuantity()">
 >>>>>>> 71abc8435755c912ee03b598a9b1272f7fd70a07
                         <input type="number" value=0 id="itemId" name="itemId"><br>
-                        <input type="submit" id="submit" class="submit" value="ADD TO CART">   
+                        <input type="submit" id="submit" class="submit" value="ADD TO ORDER">   
                     </div>
 
                     <div id="modal-close" class="modal-col3"><span class="close">&times;</span></div>

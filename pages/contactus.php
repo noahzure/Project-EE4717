@@ -1,14 +1,17 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopping website</title>
+    <title>Pizza and Co.</title>
         <link rel="stylesheet" href="../css/index.css"/>
         <link rel="stylesheet" href="../css/nav.css"/>
         <link rel="stylesheet" href="../css/footer.css"/>
         <link rel="stylesheet" href="../css/contactus.css"/>
+        <script defer src="../js/ContactUsValidator.js"></script>    
 </head>
 <body>
     <!-- Nav Bar -->
@@ -34,40 +37,55 @@
         <header>
         <img src="../asset/photo/contactus.png" style="width:100%">
         </header>
-        <div style="text-align: center">
+        <div class="contactus" style="text-align: center">
 		<h1>Contact Us</h1>	
-                 <form>
+        <form action="../php/sendContact.php" method="post" id="contact-us">
+        <table style="width: 100%; margin: 30px auto; table-layout:fixed" >
+            <tr >
+                <td colspan ="3" style="padding-top:20px">Name</td>
+            </tr>
+            <tr>           
+            <td style="text-align:right"><label for="name"></label></td>
+            <td><input type="text" id="name" name="name" placeholder="Enter Name" <?php echo 'value="'.$name.'"';                                
 
-					<label>
-						<input type="text" class="input" name="name" placeholder="ENTER NAME"/>
-							<div class="line-box">
-								<div class="line"></div>
-							</div>
-					</label>
+                                ?>></td>
+                <td style="text-align:left"><span class="error" id="error-name"></span></td>
+            </tr>
+            <tr>
+                <td colspan ="3" style="margin-top:20px">Email</td>
+            </tr>
+            <tr>
+            <td style="text-align:right"><label for="email"></label></td>
+                <td><input type="text" id="email" name="email" placeholder="Enter Email" <?php echo 'value="'.$email.'"';                                
 
-					<label>
-						<input type="text" class="input" name="email" placeholder="ENTER EMAIL"/>
-							<div class="line-box">
-								<div class="line"></div>
-							</div>
-					</label>
-
-					<label>
-						<input type="text" class="input" name="subject" placeholder="ENTER SUBJECT"/>
-							<div class="line-box">
-								<div class="line"></div>
-							</div>
-					</label>
-
-					<label>
-						<input type="text" rows="5" class="input" name="message" placeholder="ENTER MESSAGE"/>
-							<div class="line-box">
-								<div class="line"></div>
-							</div>
-					</label>
-
-					<button type="submit">SUBMIT</button>
-				</form>
+                                ?>></td>
+                <td style="text-align:left"><span class="error" id="error-email"></span></td>
+            </tr>
+            <tr>
+                <td colspan ="3" style="margin-top:20px">Purpose</td>
+            </tr>
+            <tr>
+            <td style="text-align:right"><label for="subject"></label></td>
+                <td><select id="subject" name="subject">
+                    <option value="generalenquiry">General Enquiry</option>
+                    <option value="catering">Catering</option>
+                    <option value="feedback">Feedback</option>
+                    <option value="other">Other</option></td>
+                </select></td>
+            </tr>
+            <tr>
+                <td colspan ="3" style="margin-top:20px">Message</td>
+            </tr>
+            <tr>
+            <td style="text-align:right"><label for="message"></label></td>
+                <td><textarea id="message" name="message" placeholder="Enter Message" style="height:200px"></textarea></td>
+                <td style="text-align:left"><span class="error" id="error-message"></span></td>
+            </tr>
+            </table>
+            <input type="submit" value="SUBMIT" id="submit-btn"><br>
+            <span class="error" id="error-form"></span>
+            
+        </form>
         </div>
     </div> 
     <!-- Footer -->
