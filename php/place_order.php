@@ -25,7 +25,7 @@
     $orderId = $_POST["orderId"];
     $custId = $_POST["custId"];
 
-    $sql = "update CustomerDetails set fullName='$fullName', email='$email', phoneNumber='$phoneNumber', address='$address' where custId = '$custId'";
+    $sql = "update transaction set fullName='$fullName', email='$email', phoneNumber='$phoneNumber', address='$address' where custId = '$custId'";
     mysqli_query($conn, $sql);
     if(mysqli_affected_rows($conn)<=0){
         $success = 'false';

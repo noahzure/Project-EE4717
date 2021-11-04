@@ -138,26 +138,24 @@ INSERT INTO `orders` (`id`, `transaction_ID`, `menu_ID`, `quantity`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `transaction` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `customer_ID` int(10) NOT NULL,
+  `custid` int(10) NOT NULL,
   `fullName` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `phoneNumber` int(10) NOT NULL,
   `address` varchar(100) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `customer_ID` (`customer_ID`)
+  PRIMARY KEY (`custid`),
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
 
 --
 -- Dumping data for table `transaction`
 --
 
-INSERT INTO `transaction` (`id`, `customer_id`, `fullName`, `email`, `phoneNumber`, `address`) VALUES
-(1, 1, 'Eugene', 'eugene@gmail.com', 12345678, 'krusty krab'),
-(2, 1, 'Eugene', 'eugene@gmail.com', 12345678, 'krusty krab'),
-(3, 1, 'Eugene', 'eugene@gmail.com', 12345678, 'krusty krab'),
-(4, 1, 'Eugene', 'eugene@gmail.com', 12345678, 'krusty krab'),
-(5, 1, 'Eugene', 'eugene@gmail.com', 12345678, 'krusty krab');
+INSERT INTO `transaction` (`custid`, `fullName`, `email`, `phoneNumber`, `address`) VALUES
+(1, 'Eugene', 'eugene@gmail.com', 12345678, 'krusty krab'),
+(1, 'Eugene', 'eugene@gmail.com', 12345678, 'krusty krab'),
+(1, 'Eugene', 'eugene@gmail.com', 12345678, 'krusty krab'),
+(1, 'Eugene', 'eugene@gmail.com', 12345678, 'krusty krab'),
+(1, 'Eugene', 'eugene@gmail.com', 12345678, 'krusty krab');
 
 --
 -- Constraints for dumped tables
