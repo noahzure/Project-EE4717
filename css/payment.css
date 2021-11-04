@@ -90,6 +90,10 @@ align-items: center;
   background-color: #3DA300;
 }
 
+.checkout-page .customer-details-table button:hover{
+  background-color: #00d41c;
+}
+
 .checkout-page .customer-details-table .total-payment{
   display: flex;
   justify-content: flex-end;

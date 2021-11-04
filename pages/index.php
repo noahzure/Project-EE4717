@@ -50,17 +50,14 @@
                     <div class="philosophy-card">
                         <br><h3>Fresh Ingredients</h3><br>
                         <img src="../asset/photo/home2.jpeg">
-                        <p style="margin-top: 20px;">30 minutes guaranteed, or meal will be free.</p>
                     </div>
                     <div class="philosophy-card">
                         <br><h3>Authentic recipe from Italy</h3><br>
                         <img src="../asset/photo/home3.jpeg">
-                        <p style="margin-top: 20px;">30 minutes guaranteed, or meal will be free.</p>
                     </div>
                     <div class="philosophy-card">
                         <br><h3>Customer First</h3><br>
                         <img src="../asset/photo/home 4.jpeg">
-                        <p style="margin-top: 20px;">30 minutes guaranteed, or meal will be free.</p>
                     </div>
                 </div>
 
