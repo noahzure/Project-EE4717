@@ -98,7 +98,7 @@ $_SESSION['cart'] = array();
                                                 
                                                 $rowId ='ItemWithId' .array_keys($_SESSION['cart'])[$i];
                                                 $quantityId = 'quantity'.$rowId;
-                                                $priceId ='price'.$rowId;
+                                                $priceId ='price'.$rowId; 
                                                 $totalPriceId ='totalPrice'.$rowId;
                                                 $itemNoId = 'itemNo'.$rowId;
                                                 $deleteId ='delete'.$rowId;
