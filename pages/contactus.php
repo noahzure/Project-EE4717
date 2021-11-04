@@ -79,43 +79,48 @@ if (isset($_SESSION['member']))
         <header>
         <img src="../asset/photo/contactus.png" style="width:100%">
         </header>
-        <div style="text-align: center">
+        <div class="contactus" style="text-align: center">
 		<h1>Contact Us</h1>	
         <form action="../php/sendContact.php" method="post" id="contact-us">
-
-            <label for="name">Name</label>
-                <input type="text" id="name" name="name" placeholder="ENTER NAME" <?php echo 'value="'.$name.'"';                                
+        <table style="width: 100%; margin: auto; table-layout:fixed">
+            <tr>           
+            <td style="text-align:right"><label for="name"></label></td>
+            <td><input type="text" id="name" name="name" placeholder="ENTER NAME" <?php echo 'value="'.$name.'"';                                
                                  if (isset($_SESSION['member']))
                                     {
                                         echo ' onfocus="this.blur();"';
                                     }
-                                ?>>
-                <span class="error" id="error-name"></span><br>
-            
-            <label for="email">Email</label>
-                <input type="text" id="email" name="email" placeholder="ENTER EMAIL" <?php echo 'value="'.$email.'"';                                
+                                ?>></td>
+                <td style="text-align:left"><span class="error" id="error-name"></span></td>
+            </tr>
+            <tr>
+            <td style="text-align:right"><label for="email"></label></td>
+                <td><input type="text" id="email" name="email" placeholder="ENTER EMAIL" <?php echo 'value="'.$email.'"';                                
                                  if (isset($_SESSION['member']))
                                     {
                                         echo ' onfocus="this.blur();"';
                                     }
-                                ?>>
-                <span class="error" id="error-email"></span><br>
-
-            <label for="subject">Subject</label>
-                <select id="subject" name="subject">
+                                ?>></td>
+                <td style="text-align:left"><span class="error" id="error-email"></span></td>
+            </tr>
+            <tr>
+            <td style="text-align:right"><label for="subject"></label></td>
+                <td><select id="subject" name="subject">
                     <option value="generalenquiry">General Enquiry</option>
                     <option value="catering">Catering</option>
                     <option value="feedback">Feedback</option>
-                    <option value="other">Other</option>
-                </select><br>
-
-            <label for="message">Message</label>
-                <textarea id="message" name="message" placeholder="ENTER TEXT" style="height:200px"></textarea>
-                <span class="error" id="error-message"></span><br>
-
+                    <option value="other">Other</option></td>
+                </select></td>
+            </tr>
+            <tr>
+            <td style="text-align:right"><label for="message"></label></td>
+                <td><textarea id="message" name="message" placeholder="ENTER MESSAGE" style="height:200px"></textarea></td>
+                <td style="text-align:left"><span class="error" id="error-message"></span></td>
+            </tr>
+            </table>
             <input type="submit" value="SUBMIT" id="submit-btn"><br>
             <span class="error" id="error-form"></span>
-
+            
         </form>
         </div>
     </div> 
