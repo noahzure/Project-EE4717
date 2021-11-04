@@ -60,6 +60,6 @@
         }
     }
 
-    header("Location:../pages/checkout.php?success=".$success);
+    header("Location:../pages/index.php?success=".$success);
     
 ?>
