@@ -44,7 +44,7 @@ $_SESSION['cart'] = array();
         <header>
         <img src="../asset/photo/order.png" style="width:100%">
         </header>
-        <div style="text-align: center; background-color: #f7f5f5;  margin-top:50px; padding-top:30px; padding-bottom:30px " class="shopping-cart-page">
+        <div style="text-align: center; background-color: #f7f5f5;  margin-top:30px; padding-top:30px; padding-bottom:30px " class="shopping-cart-page">
                     <h1 style=" margin-bottom:30px">Order Summary</h1>
 
                     <table class="order-summary-table" style ="width:90%; margin: 20px auto">

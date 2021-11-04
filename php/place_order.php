@@ -24,8 +24,9 @@
     $finalPrice = $_POST["finalPrice"];
     $orderId = $_POST["orderId"];
     $custId = $_POST["custId"];
+    $date = date("Y-m-d");
 
-    $sql = "INSERT INTO `transaction` (`custId`,`fullName`,`email`,`phoneNumber`,`address`,`finalPrice`) VALUES ('".$custId."','".$fullName."','".$email."','".$phoneNumber."','".$address."','".$finalPrice."')";
+    $sql = "INSERT INTO `transaction` (`date`,`fullName`,`email`,`phoneNumber`,`address`,`finalPrice`) VALUES ('".$date."','".$fullName."','".$email."','".$phoneNumber."','".$address."','".$finalPrice."')";
     mysqli_query($conn, $sql);
     if(mysqli_affected_rows($conn)<=0){
         $success = 'false';
@@ -60,6 +61,6 @@
         }
     }
 
-    header("Location:../pages/checkout.php?success=".$success);
+    header("Location:../pages/index.php?success=".$success);
     
 ?>

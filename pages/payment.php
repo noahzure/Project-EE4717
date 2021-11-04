@@ -20,6 +20,7 @@ $_SESSION['cart'] = array();
         <link rel="stylesheet" href="../css/nav.css"/>
         <link rel="stylesheet" href="../css/footer.css"/>
         <link rel="stylesheet" href="../css/payment.css"/>
+        <script type="text/javascript" src="../js/confirmation.js"> </script>
 </head>
 <body>
     <!-- Nav Bar -->
@@ -209,70 +210,22 @@ $_SESSION['cart'] = array();
                                     <td></td>
                                     <td colspan="2">
                                         <div class="total-payment">
-                                            <input type="hidden" name="totalAmount" value="<?php echo $total;?>"/>
+                                            <input type="hidden" name="finalPrice" value="<?php echo $finalPrice;?>"/>
                                             <input type="hidden" name="orderId" value="<?php echo $orderId;?>"/>
                                             <input type="hidden" name="custId" value="<?php echo $uid;?>"/>
                                             <div>Grand Total: <span>$<?=$finalPrice; ?></span></div>
-                                            <button class="place-order-btn">Place Order</button>
+                                            <button class="place-order-btn" onclick="confirmSubmit()">Place Order</button>
                                         </div>
                                     </td>
                                 </tr>
                             </table>
                         </form>
-
-                        <!-- The Modal -->
-                        <div id="success" class="modal">
-                            <span></span>
-                            <div class="modal-content">
-                                <div class="modal-header-success">
-                                    <h2>Payment Successful !!</h2>
-                                </div>
-                                <div class="modal-body">
-                                    <img width="100" height="100" src="../images/successful.png" alt="">
-                                </div>
-                                <div class="modal-footer-success">
-                                    <p>We have sent you the order confirmation to your email</p>
-                                </div>
-                                <button class="btn btn-outline-primary" style="margin:auto;display: block; margin-top: 12px;"> <a href="../pages/">Back to Homepage </a></button>
-                            </div>
-                        </div>
-                        <div id="unsuccess" class="modal">
-                            <span></span>
-                            <div class="modal-content">
-                                <div class="modal-header-unsuccess">
-                                    <h2>Payment Unsuccessful !!</h2>
-                                </div>
-                                <div class="modal-body">
-                                    <img width="100" height="100" src="../images/cross.png" alt="">
-                                </div>
-                                <div class="modal-footer-unsuccess">
-                                    <p>There's something wrong with the payment, please try again!</p>
-                                </div>
-                                <button class="btn btn-outline-primary" style="margin:auto;display: block; margin-top: 12px;"> <a href="../pages/">Back to Homepage </a></button>
-                            </div>
-                        </div>
-                                                
+                   
                     </div>
                 </div>
             </div>
 
-            <script>
-                var check='<?php echo ($success); ?>'
-                // alert(typeof(check))
            
-                var modal1 = document.getElementById("success");
-                var modal2 = document.getElementById("unsuccess");
-                
-                var span = document.getElementById("close");
-
-                
-                if (check === 'true')
-                    modal1.style.display = "block";
-                if (check === 'false')
-                    modal2.style.display = "block";
-                
-            </script>
-            
             <!-- Footer -->
     <footer class='footer'>
         <div class="footer-content">
