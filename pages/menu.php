@@ -73,7 +73,7 @@ $_SESSION['cart'] = array();
 
                 <?php
 
-                    $sql = "SELECT * FROM menu LIMIT 12";
+                    $sql = "SELECT * FROM menu";
                     $result = mysqli_query($conn, $sql);
 
                     if (mysqli_num_rows($result) > 0) {

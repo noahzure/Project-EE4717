@@ -1,4 +1,48 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
+
+<?php
+                    $servername = "localhost";
+                    $username = "f32ee";
+                    $password = "f32ee";
+                    $dbname = "f32ee";
+                    // Create connection
+                    $conn = mysqli_connect($servername, $username, $password, $dbname);
+                    // Check connection
+                    if (!$conn) {
+                        die("Connection failed: " . mysqli_connect_error());
+                    }
+                ?>
+<?php
+
+            $name='';
+            $email='';
+            $postalCode='';
+            $phone='';
+            $address='';
+
+?>
+<?php
+
+if (isset($_SESSION['member']))
+{
+
+    $sql = "SELECT * FROM customers WHERE id = ".$_SESSION['member'];
+    $result = mysqli_query($conn, $sql);
+
+    if (mysqli_num_rows($result) > 0) {
+        // output data of each row
+        
+        while($row = mysqli_fetch_assoc($result)) {
+            $name=$row['name'];
+            $email=$row['email'];
+            $postalCode=$row['postalCode'];
+            $phone=$row['phone'];
+            $address=$row['address'];
+        }
+    }
+}
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,7 +53,7 @@
         <link rel="stylesheet" href="../css/nav.css"/>
         <link rel="stylesheet" href="../css/footer.css"/>
         <link rel="stylesheet" href="../css/contactus.css"/>
-        <script defer src="../js/formvalidation.js"></script>    
+        <script defer src="../js/ContactUsValidator.js"></script>    
 </head>
 <body>
     <!-- Nav Bar -->
@@ -37,14 +81,24 @@
         </header>
         <div style="text-align: center">
 		<h1>Contact Us</h1>	
-        <form action="show_post.php" method="post" id="contact-us">
+        <form action="../php/sendContact.php" method="post" id="contact-us">
 
             <label for="name">Name</label>
-                <input type="text" id="name" name="name" placeholder="ENTER NAME">
+                <input type="text" id="name" name="name" placeholder="ENTER NAME" <?php echo 'value="'.$name.'"';                                
+                                 if (isset($_SESSION['member']))
+                                    {
+                                        echo ' onfocus="this.blur();"';
+                                    }
+                                ?>>
                 <span class="error" id="error-name"></span><br>
             
             <label for="email">Email</label>
-                <input type="text" id="email" name="email" placeholder="ENTER EMAIL">
+                <input type="text" id="email" name="email" placeholder="ENTER EMAIL" <?php echo 'value="'.$email.'"';                                
+                                 if (isset($_SESSION['member']))
+                                    {
+                                        echo ' onfocus="this.blur();"';
+                                    }
+                                ?>>
                 <span class="error" id="error-email"></span><br>
 
             <label for="subject">Subject</label>

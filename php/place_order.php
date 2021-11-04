@@ -21,11 +21,11 @@
     $address = $_POST["address"];
     $creditCardExpires = $_POST["creditCardExpires"];
     $cvv = $_POST["cvv"];
-    $totalAmount = $_POST["totalAmount"];
+    $finalPrice = $_POST["finalPrice"];
     $orderId = $_POST["orderId"];
     $custId = $_POST["custId"];
 
-    $sql = "update CustomerDetails set fullName='$fullName', email='$email', phoneNumber='$phoneNumber', address='$address' where custId = '$custId'";
+    $sql = "INSERT INTO `transaction` (`custId`,`fullName`,`email`,`phoneNumber`,`address`,`finalPrice`) VALUES ('".$custId."','".$fullName."','".$email."','".$phoneNumber."','".$address."','".$finalPrice."')";
     mysqli_query($conn, $sql);
     if(mysqli_affected_rows($conn)<=0){
         $success = 'false';

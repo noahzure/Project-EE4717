@@ -161,7 +161,7 @@ $_SESSION['cart'] = array();
                                 <td colspan="5" class="total-price">Delivery: <span> $<?=$dlvPrice; ?></span></td>
                                 </tr>   
                                 <tr>
-                                <td colspan="5" class="total-price">Final Total Price: <span> $<?=$finalPrice; ?></span></td>
+                                <td colspan="5" name="finalPrice" class="total-price">Final Total Price: <span> $<?=$finalPrice; ?></span></td>
                                 </tr>   
                             </tfoot>
                         </table>
@@ -209,10 +209,10 @@ $_SESSION['cart'] = array();
                                     <td></td>
                                     <td colspan="2">
                                         <div class="total-payment">
-                                            <input type="hidden" name="totalAmount" value="1.00"/>
-                                            <input type="hidden" name="orderId" value="1.00"/>
-                                            <input type="hidden" name="custId" value="1.00"/>
-                                            <div>Total Payment: <span>$750</span></div>
+                                            <input type="hidden" name="totalAmount" value="<?php echo $total;?>"/>
+                                            <input type="hidden" name="orderId" value="<?php echo $orderId;?>"/>
+                                            <input type="hidden" name="custId" value="<?php echo $uid;?>"/>
+                                            <div>Total Payment: <span>$<?=$finalPrice; ?></span></div>
                                             <button class="place-order-btn">Place Order</button>
                                         </div>
                                     </td>
@@ -288,7 +288,7 @@ $_SESSION['cart'] = array();
     </footer>
     </body>
 
-    <script src="../js/validateForm.js"></script>
+    <script src="../js/paymentvalidation.js"></script>
     <script>
     function handleSubmit(){
         let form = document.querySelector('#place-order-form')

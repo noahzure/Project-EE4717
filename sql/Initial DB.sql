@@ -139,26 +139,25 @@ INSERT INTO `orders` (`id`, `transaction_ID`, `menu_ID`, `quantity`) VALUES
 
 CREATE TABLE IF NOT EXISTS `transaction` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
-  `customer_ID` int(10) NOT NULL,
-  `date` date NOT NULL,
-  `ship_address` varchar(100) NOT NULL,
-  `ship_postalCode` int(6) NOT NULL,
-  `note` varchar(140) NOT NULL,
-  `price` float NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `customer_ID` (`customer_ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
+  `custId` int(10) NOT NULL,
+  `fullName` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `phoneNumber` varchar(30) NOT NULL,
+  `address` varchar(256) NOT NULL,
+  `finalPrice` float NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16;
 
 --
 -- Dumping data for table `transaction`
 --
 
-INSERT INTO `transaction` (`id`, `customer_ID`, `date`, `ship_address`, `ship_postalCode`, `note`, `price`) VALUES
-(1, 1, '2018-11-01', '1234a4t adfjadf asdfda', 0, '', 0),
-(2, 1, '2018-11-01', '1234a4t adfjadf asdfda', 0, '', 0),
-(3, 1, '2018-11-01', '1234a4t adfjadf asdfda', 0, '', 0),
-(4, 1, '2018-11-01', '1234a4t adfjadf asdfda', 0, '', 15),
-(5, 1, '2018-11-01', '1234a4t adfjadf asdfda', 0, '', 18.445);
+INSERT INTO `transaction` (`id`, `custId`, `fullName`, `email`, `phoneNumber`, `address`, `finalPrice`) VALUES
+(1, 1, 'Eugene', 'eugene@gmail.com', 12345678, 'krusty krab', 2),
+(2, 1, 'Eugene', 'eugene@gmail.com', 12345678, 'krusty krab', 4.5),
+(3, 1, 'Eugene', 'eugene@gmail.com', 12345678, 'krusty krab', 1.5),
+(4, 1, 'Eugene', 'eugene@gmail.com', 12345678, 'krusty krab', 10),
+(5, 1, 'Eugene', 'eugene@gmail.com', 12345678, 'krusty krab', 13);
 
 --
 -- Constraints for dumped tables
@@ -174,8 +173,8 @@ ALTER TABLE `orders`
 --
 -- Constraints for table `transaction`
 --
-ALTER TABLE `transaction`
-  ADD CONSTRAINT `transaction_ibfk_1` FOREIGN KEY (`customer_ID`) REFERENCES `customers` (`id`);
+/*ALTER TABLE `transaction`
+  ADD CONSTRAINT `transaction_ibfk_1` FOREIGN KEY (`custId`) REFERENCES `customers` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

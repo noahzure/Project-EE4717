@@ -33,5 +33,5 @@ input[type=text], select, textarea {
  }
  .error {
 	color: #ff0000;
-	font-size: 70%;
+	font-size: 100%;
 }
