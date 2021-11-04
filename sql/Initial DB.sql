@@ -138,24 +138,26 @@ INSERT INTO `orders` (`id`, `transaction_ID`, `menu_ID`, `quantity`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `transaction` (
-  `custid` int(10) NOT NULL,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `custId` int(10) NOT NULL,
   `fullName` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `phoneNumber` int(10) NOT NULL,
-  `address` varchar(100) NOT NULL,
-  PRIMARY KEY (`custid`),
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
+  `phoneNumber` varchar(30) NOT NULL,
+  `address` varchar(256) NOT NULL,
+  `finalPrice` float NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16;
 
 --
 -- Dumping data for table `transaction`
 --
 
-INSERT INTO `transaction` (`custid`, `fullName`, `email`, `phoneNumber`, `address`) VALUES
-(1, 'Eugene', 'eugene@gmail.com', 12345678, 'krusty krab'),
-(1, 'Eugene', 'eugene@gmail.com', 12345678, 'krusty krab'),
-(1, 'Eugene', 'eugene@gmail.com', 12345678, 'krusty krab'),
-(1, 'Eugene', 'eugene@gmail.com', 12345678, 'krusty krab'),
-(1, 'Eugene', 'eugene@gmail.com', 12345678, 'krusty krab');
+INSERT INTO `transaction` (`id`, `custId`, `fullName`, `email`, `phoneNumber`, `address`, `finalPrice`) VALUES
+(1, 1, 'Eugene', 'eugene@gmail.com', 12345678, 'krusty krab', 2),
+(2, 1, 'Eugene', 'eugene@gmail.com', 12345678, 'krusty krab', 4.5),
+(3, 1, 'Eugene', 'eugene@gmail.com', 12345678, 'krusty krab', 1.5),
+(4, 1, 'Eugene', 'eugene@gmail.com', 12345678, 'krusty krab', 10),
+(5, 1, 'Eugene', 'eugene@gmail.com', 12345678, 'krusty krab', 13);
 
 --
 -- Constraints for dumped tables
@@ -171,8 +173,8 @@ ALTER TABLE `orders`
 --
 -- Constraints for table `transaction`
 --
-ALTER TABLE `transaction`
-  ADD CONSTRAINT `transaction_ibfk_1` FOREIGN KEY (`customer_ID`) REFERENCES `customers` (`id`);
+/*ALTER TABLE `transaction`
+  ADD CONSTRAINT `transaction_ibfk_1` FOREIGN KEY (`custId`) REFERENCES `customers` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

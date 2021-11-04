@@ -161,7 +161,7 @@ $_SESSION['cart'] = array();
                                 <td colspan="5" class="total-price">Delivery: <span> $<?=$dlvPrice; ?></span></td>
                                 </tr>   
                                 <tr>
-                                <td colspan="5" class="total-price">Final Total Price: <span> $<?=$finalPrice; ?></span></td>
+                                <td colspan="5" name="finalPrice" class="total-price">Final Total Price: <span> $<?=$finalPrice; ?></span></td>
                                 </tr>   
                             </tfoot>
                         </table>
