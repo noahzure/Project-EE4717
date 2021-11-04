@@ -151,7 +151,7 @@ $_SESSION['cart'] = array();
                         <?php
                         if ($allPrice==0)
                         {
-                            $message = "Order is empty, Please select through menu";
+                            $message = "Order is empty, Please select through";
                             echo "<script type='text/javascript'>alert('$message');
                             window.location.href='./menu.php'; 
                             </script>";

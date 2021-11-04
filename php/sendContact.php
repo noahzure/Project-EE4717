@@ -1,5 +1,4 @@
 <?php
-include 'credentials.php';
 
 
 $servername = "localhost";
@@ -29,8 +28,8 @@ $result =mysqli_query($conn, $sql_1);
 if ($result) { 
     $message = "Feedback has been received!";
     echo "<script type='text/javascript'>alert('$message');";
-    echo "window.location.href='../contact.php';";
-    echo"</script>"; //window.location.href='/~kimie/sushi/contact.html';
+    echo "window.location.href='../pages/contactus.php';";
+    echo"</script>"; 
 } 
 else {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
