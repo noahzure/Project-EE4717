@@ -60,14 +60,14 @@ $_SESSION['cart'] = array();
         ?>
 
         <div style="text-align: center">
-            <div class="checkout-page page">
-                <div class="title-container">
+            <div class="checkout-page">
+                <div class="title-container" style="margin: 50px 0">
                     <h1><b>CHECKOUT</b></h1>
                 </div>
                 <div class="checkout-content content">
-                    <div class="order-summary">
+                    <div class="order-summary" style="background-color: #f7f5f5; padding:10px; margin-top:10px">
                         <h2>Order summary</h2>
-                        <table class="order-summary-table">
+                        <table class="order-summary-table" style ="width:90%; margin: 20px auto">
                             <thead>
                                 <tr>
                                     <th>Food</th>
@@ -106,7 +106,7 @@ $_SESSION['cart'] = array();
                                                 echo "<tr id='".$rowId."'>";
 
 
-                                                echo "<td class='td-center'><img src=".$row['imgURL']." style='width:25%' ><input type='number' class='input-number' value=".array_keys($_SESSION['cart'])[$i]." id='itemNoId' name='itemNoId'";
+                                                echo "<td class='td-center'><img src=".$row['imgURL']." style='width:25%; margin: 15px 0' ><input type='number' class='input-number' value=".array_keys($_SESSION['cart'])[$i]." id='itemNoId' name='itemNoId'";
                                                 echo 'style="display:none"';
                                                 echo" ></td>";
 
@@ -150,7 +150,7 @@ $_SESSION['cart'] = array();
                             ?>
 
                             </tbody>
-                            <tfoot>
+                            <tfoot style="margin-top:20px">
                                 <tr>
                                 <td colspan="5" class="total-price">Total Price: <span> $<?=$allPrice; ?></span></td>
                                 </tr>
@@ -161,7 +161,7 @@ $_SESSION['cart'] = array();
                                 <td colspan="5" class="total-price">Delivery: <span> $<?=$dlvPrice; ?></span></td>
                                 </tr>   
                                 <tr>
-                                <td colspan="5" name="finalPrice" class="total-price">Final Total Price: <span> $<?=$finalPrice; ?></span></td>
+                                <td colspan="5" name="finalPrice" class="total-price"><b>Grand Total:</b><span> $<?=$finalPrice; ?></span></td>
                                 </tr>   
                             </tfoot>
                         </table>
@@ -169,7 +169,7 @@ $_SESSION['cart'] = array();
                     
                 </div>
 
-                <div class="checkout-content content">
+                <div class="checkout-content content" style="background-color: #f7f5f5; padding:10px; margin:50px 0;">
                     <div class="customer-details">
                         <h2>Customer Details</h2>
                         <form method="POST" action="../php/place_order.php" id="place-order-form" onsubmit="return handleSubmit()">
@@ -212,7 +212,7 @@ $_SESSION['cart'] = array();
                                             <input type="hidden" name="totalAmount" value="<?php echo $total;?>"/>
                                             <input type="hidden" name="orderId" value="<?php echo $orderId;?>"/>
                                             <input type="hidden" name="custId" value="<?php echo $uid;?>"/>
-                                            <div>Total Payment: <span>$<?=$finalPrice; ?></span></div>
+                                            <div>Grand Total: <span>$<?=$finalPrice; ?></span></div>
                                             <button class="place-order-btn">Place Order</button>
                                         </div>
                                     </td>

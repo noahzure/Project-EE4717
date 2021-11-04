@@ -18,7 +18,6 @@ $_SESSION['cart'] = array();
         <link rel="stylesheet" href="../css/nav.css"/>
         <link rel="stylesheet" href="../css/footer.css"/>
         <link rel="stylesheet" href="../css/order.css"/>
-        <link rel="stylesheet" href="../css/payment.css"/>
         <script type="text/javascript" src="../js/update_order.js"></script>
 </head>
 <body>
@@ -45,10 +44,10 @@ $_SESSION['cart'] = array();
         <header>
         <img src="../asset/photo/order.png" style="width:100%">
         </header>
-        <div style="text-align: center" class="shopping-cart-page page">
-                    <h1>Order Summary</h1>
+        <div style="text-align: center; background-color: #f7f5f5;  margin-top:50px; padding-top:30px; padding-bottom:30px " class="shopping-cart-page">
+                    <h1 style=" margin-bottom:30px">Order Summary</h1>
 
-                    <table class="order-summary-table">
+                    <table class="order-summary-table" style ="width:90%; margin: 20px auto">
                         <thead>
                             <tr>
                                 <th>Food</th>
@@ -97,10 +96,10 @@ $_SESSION['cart'] = array();
                                             $saveId ='save'.$rowId;
                                             echo'<form action="../php/save_change.php" method="post">';
 
-                                            echo "<tr id='".$rowId."'>";
+                                            echo "<tr id='".$rowId."' style='margin-top:50px' >";
 
 
-                                            echo "<td class='td-center'><img src=".$row['imgURL']." style='width:25%' ><input type='number' class='input-number' value=".array_keys($_SESSION['cart'])[$i]." id='itemNoId' name='itemNoId'";
+                                            echo "<td class='td-center'><img src=".$row['imgURL']." style='width:25%; margin: 15px 0' ><input type='number' class='input-number' value=".array_keys($_SESSION['cart'])[$i]." id='itemNoId' name='itemNoId'";
                                             echo 'style="display:none"';
                                             echo" ></td>";
 

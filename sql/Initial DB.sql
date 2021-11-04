@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 02, 2021 at 11:24 AM
+-- Generation Time: Nov 04, 2021 at 07:41 AM
 -- Server version: 5.5.62-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.29
 
@@ -17,35 +17,8 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `f37ee`
+-- Database: `f38ee`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `customers`
---
-
-CREATE TABLE IF NOT EXISTS `customers` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) NOT NULL,
-  `address` varchar(100) NOT NULL,
-  `postalCode` varchar(6) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `phone` varchar(80) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=40 ;
-
---
--- Dumping data for table `customers`
---
-
-INSERT INTO `customers` (`id`, `name`, `address`, `postalCode`, `email`, `phone`) VALUES
-(1, 'sam ', '1234a4t adfjadf asdfda', '0', 'samuelparick97@gmail.com', '+6592383423'),
-(2, 'sam ', '1234a4t adfjadf asdfda', '0', 'samuelparick97@gmail.com', '+6592383423'),
-(3, 'sam ', '1234a4t adfjadf asdfda', '0', 'samuelparick97@gmail.com', '+6592383423'),
-(4, 'sam ', '1234a4t adfjadf asdfda', '0', 'samuelparick97@gmail.com', '+6592383423'),
-(5, 'sam ', '1234a4t adfjadf asdfda', '0', 'samuelparick97@gmail.com', '+6592383423');
 
 -- --------------------------------------------------------
 
@@ -139,25 +112,25 @@ INSERT INTO `orders` (`id`, `transaction_ID`, `menu_ID`, `quantity`) VALUES
 
 CREATE TABLE IF NOT EXISTS `transaction` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
-  `custId` int(10) NOT NULL,
+  `date` date NOT NULL,
   `fullName` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `phoneNumber` varchar(30) NOT NULL,
   `address` varchar(256) NOT NULL,
   `finalPrice` float NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
 
 --
 -- Dumping data for table `transaction`
 --
 
-INSERT INTO `transaction` (`id`, `custId`, `fullName`, `email`, `phoneNumber`, `address`, `finalPrice`) VALUES
-(1, 1, 'Eugene', 'eugene@gmail.com', 12345678, 'krusty krab', 2),
-(2, 1, 'Eugene', 'eugene@gmail.com', 12345678, 'krusty krab', 4.5),
-(3, 1, 'Eugene', 'eugene@gmail.com', 12345678, 'krusty krab', 1.5),
-(4, 1, 'Eugene', 'eugene@gmail.com', 12345678, 'krusty krab', 10),
-(5, 1, 'Eugene', 'eugene@gmail.com', 12345678, 'krusty krab', 13);
+INSERT INTO `transaction` (`id`, `date`, `fullName`, `email`, `phoneNumber`, `address`, `finalPrice`) VALUES
+(1, '0000-00-00', 'Eugene', 'eugene@gmail.com', '12345678', 'krusty krab', 2),
+(2, '0000-00-00', 'Eugene', 'eugene@gmail.com', '12345678', 'krusty krab', 4.5),
+(3, '0000-00-00', 'Eugene', 'eugene@gmail.com', '12345678', 'krusty krab', 1.5),
+(4, '0000-00-00', 'Eugene', 'eugene@gmail.com', '12345678', 'krusty krab', 10),
+(5, '0000-00-00', 'Eugene', 'eugene@gmail.com', '12345678', 'krusty krab', 13);
 
 --
 -- Constraints for dumped tables
@@ -167,14 +140,8 @@ INSERT INTO `transaction` (`id`, `custId`, `fullName`, `email`, `phoneNumber`, `
 -- Constraints for table `orders`
 --
 ALTER TABLE `orders`
-  ADD CONSTRAINT `order_ibfk_2` FOREIGN KEY (`menu_ID`) REFERENCES `menu` (`id`),
-  ADD CONSTRAINT `order_ibfk_1` FOREIGN KEY (`transaction_ID`) REFERENCES `transaction` (`id`);
-
---
--- Constraints for table `transaction`
---
-/*ALTER TABLE `transaction`
-  ADD CONSTRAINT `transaction_ibfk_1` FOREIGN KEY (`custId`) REFERENCES `customers` (`id`);
+  ADD CONSTRAINT `order_ibfk_1` FOREIGN KEY (`transaction_ID`) REFERENCES `transaction` (`id`),
+  ADD CONSTRAINT `order_ibfk_2` FOREIGN KEY (`menu_ID`) REFERENCES `menu` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

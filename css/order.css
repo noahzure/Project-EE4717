@@ -13,12 +13,12 @@
 }
 
 .shopping-cart-page table thead{
-    background-color: #F4F4F4;
+    background-color: #c4c4c4;
 }
 .shopping-cart-page table th{
     padding: 10px 20px;
     font-weight: 500;
-    color: #8A8A8A;
+    color: #424242;
 }
 
 .shopping-cart-page table tr td{
@@ -40,11 +40,19 @@
 }
 
 .shopping-cart-page table .checkout-btn{
-    background-color: #002ba3;
+    background-color: #00a128;
     width: 150px;
     height: 40px;
     cursor: pointer;
 }
+
+
+  
+ 
+  .shopping-cart-page table .checkout-btn:hover {
+    background-color: #00d41c;
+  }
+
 
 .shopping-cart-page table .product-col img{
     width: 100px;
@@ -61,7 +69,7 @@
 }
 
 .shopping-cart-page table tfoot tr{
-    border-top: 1px solid lightgrey;
+    border-top: 1px solid #c4c4c4;
     height: 80px;
     padding-top: 30px;
 }
