@@ -28,6 +28,6 @@ echo $_SESSION['cart'][$itemId];
 
 echo "<script type='text/javascript'>
 window.location.href='../pages/order.php'; 
-</script>"; //window.location.href='/~kimie/sushi/cart.php'; 
+</script>"; 
 
 ?>
